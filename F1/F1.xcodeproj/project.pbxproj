@@ -233,7 +233,6 @@
 			files = (
 				D862D68325A10D79001F0DDE /* LaunchScreen.storyboard in Resources */,
 				D862D68025A10D79001F0DDE /* Assets.xcassets in Resources */,
-				D862D67E25A10D77001F0DDE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +295,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D862D67C25A10D77001F0DDE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D862D67D25A10D77001F0DDE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D862D68125A10D79001F0DDE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
