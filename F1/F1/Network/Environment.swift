@@ -1,5 +1,5 @@
 import Foundation
 
 enum Environment: String {
-    case apiUrl = "https://ergast.com/api/"
+    case apiUrl = "https://ergast.com/api/f1/"
 }

@@ -11,6 +11,7 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        interactor.loadCurrentSeason()
     }
 
     override func buildViewHierarchy() { }

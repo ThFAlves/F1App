@@ -28,6 +28,8 @@
 		D862D6F125A11203001F0DDE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6F025A11203001F0DDE /* ApiEndpoint.swift */; };
 		D862D6F625A112F1001F0DDE /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6F525A112F1001F0DDE /* Api.swift */; };
 		D862D6FB25A114E6001F0DDE /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6FA25A114E6001F0DDE /* Environment.swift */; };
+		D862D70125A1180E001F0DDE /* SeasonEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D70025A1180E001F0DDE /* SeasonEndpoint.swift */; };
+		D862D70725A11AA6001F0DDE /* SeasonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D70625A11AA6001F0DDE /* SeasonData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		D862D6F025A11203001F0DDE /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
 		D862D6F525A112F1001F0DDE /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		D862D6FA25A114E6001F0DDE /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		D862D70025A1180E001F0DDE /* SeasonEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonEndpoint.swift; sourceTree = "<group>"; };
+		D862D70625A11AA6001F0DDE /* SeasonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +178,8 @@
 		D862D6AE25A10E83001F0DDE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D862D70525A11A9B001F0DDE /* Model */,
+				D862D6FF25A117FE001F0DDE /* Service */,
 				D862D6AF25A10E8E001F0DDE /* HomeCoordinator.swift */,
 				D862D6B025A10E8E001F0DDE /* HomeFactory.swift */,
 				D862D6B125A10E8E001F0DDE /* HomePresenter.swift */,
@@ -205,6 +211,22 @@
 				D862D6FA25A114E6001F0DDE /* Environment.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		D862D6FF25A117FE001F0DDE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D862D70025A1180E001F0DDE /* SeasonEndpoint.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D862D70525A11A9B001F0DDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D862D70625A11AA6001F0DDE /* SeasonData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,7 +359,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D862D6B625A10E8E001F0DDE /* HomeFactory.swift in Sources */,
+				D862D70125A1180E001F0DDE /* SeasonEndpoint.swift in Sources */,
 				D862D6B525A10E8E001F0DDE /* HomeCoordinator.swift in Sources */,
+				D862D70725A11AA6001F0DDE /* SeasonData.swift in Sources */,
 				D862D6B925A10E8F001F0DDE /* HomeInteractor.swift in Sources */,
 				D862D6C925A10ED6001F0DDE /* ViewController.swift in Sources */,
 				D862D6B725A10E8F001F0DDE /* HomePresenter.swift in Sources */,

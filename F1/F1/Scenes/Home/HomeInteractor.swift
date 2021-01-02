@@ -1,6 +1,7 @@
 import Foundation
 
 protocol HomeInteracting: AnyObject {
+    func loadCurrentSeason()
 }
 
 final class HomeInteractor {
@@ -15,4 +16,7 @@ final class HomeInteractor {
 
 // MARK: - HomeInteracting
 extension HomeInteractor: HomeInteracting {
+    func loadCurrentSeason() {
+        service.getCurrentSeason()
+    }
 }
