@@ -1,6 +1,6 @@
 import Foundation
 
-protocol ApiEndpointExposable {
+protocol ApiEndpoint {
     var baseURL: URL { get }
     var path: String { get }
     var method: HTTPMethod { get }
@@ -10,7 +10,7 @@ protocol ApiEndpointExposable {
     var absoluteStringUrl: String { get }
 }
 
-extension ApiEndpointExposable {
+extension ApiEndpoint {
     var baseURL: URL {
         guard let url = URL(string: Environment.apiUrl.rawValue) else {
             fatalError("You need to define valid url")

@@ -5,9 +5,9 @@ class Api<E: Decodable> {
     typealias Success = ApiCompletion.Success<E>
     typealias Result = ApiCompletion.ApiResult<E>
     
-    private let endpoint: ApiEndpointExposable
+    private let endpoint: ApiEndpoint
     
-    init(endpoint: ApiEndpointExposable) {
+    init(endpoint: ApiEndpoint) {
         self.endpoint = endpoint
     }
     
