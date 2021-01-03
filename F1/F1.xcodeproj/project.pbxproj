@@ -37,6 +37,12 @@
 		D862D73225A12380001F0DDE /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D73125A12380001F0DDE /* CollectionViewDataSource.swift */; };
 		D862D73A25A123B4001F0DDE /* ReloadDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D73925A123B4001F0DDE /* ReloadDataSource.swift */; };
 		D862D73F25A123D7001F0DDE /* Reloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D73E25A123D7001F0DDE /* Reloadable.swift */; };
+		D862D75325A1820E001F0DDE /* RaceDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D74D25A1820E001F0DDE /* RaceDetailCoordinator.swift */; };
+		D862D75425A1820E001F0DDE /* RaceDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D74E25A1820E001F0DDE /* RaceDetailFactory.swift */; };
+		D862D75525A1820E001F0DDE /* RaceDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D74F25A1820E001F0DDE /* RaceDetailPresenter.swift */; };
+		D862D75625A1820E001F0DDE /* RaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75025A1820E001F0DDE /* RaceDetailViewController.swift */; };
+		D862D75725A1820E001F0DDE /* RaceDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */; };
+		D862D75825A1820E001F0DDE /* RaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75225A1820E001F0DDE /* RaceDetailService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +104,12 @@
 		D862D73125A12380001F0DDE /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D862D73925A123B4001F0DDE /* ReloadDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadDataSource.swift; sourceTree = "<group>"; };
 		D862D73E25A123D7001F0DDE /* Reloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reloadable.swift; sourceTree = "<group>"; };
+		D862D74D25A1820E001F0DDE /* RaceDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailCoordinator.swift; sourceTree = "<group>"; };
+		D862D74E25A1820E001F0DDE /* RaceDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailFactory.swift; sourceTree = "<group>"; };
+		D862D74F25A1820E001F0DDE /* RaceDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailPresenter.swift; sourceTree = "<group>"; };
+		D862D75025A1820E001F0DDE /* RaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailViewController.swift; sourceTree = "<group>"; };
+		D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractor.swift; sourceTree = "<group>"; };
+		D862D75225A1820E001F0DDE /* RaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailService.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -219,6 +231,7 @@
 		D862D6AD25A10E7C001F0DDE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D862D74C25A181D1001F0DDE /* RaceDetail */,
 				D862D6AE25A10E83001F0DDE /* Home */,
 			);
 			path = Scenes;
@@ -295,6 +308,19 @@
 				D862D73E25A123D7001F0DDE /* Reloadable.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		D862D74C25A181D1001F0DDE /* RaceDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D862D74D25A1820E001F0DDE /* RaceDetailCoordinator.swift */,
+				D862D74E25A1820E001F0DDE /* RaceDetailFactory.swift */,
+				D862D74F25A1820E001F0DDE /* RaceDetailPresenter.swift */,
+				D862D75025A1820E001F0DDE /* RaceDetailViewController.swift */,
+				D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */,
+				D862D75225A1820E001F0DDE /* RaceDetailService.swift */,
+			);
+			path = RaceDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -534,22 +560,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D862D75625A1820E001F0DDE /* RaceDetailViewController.swift in Sources */,
 				D862D6B625A10E8E001F0DDE /* HomeFactory.swift in Sources */,
 				D862D73225A12380001F0DDE /* CollectionViewDataSource.swift in Sources */,
 				D862D70125A1180E001F0DDE /* SeasonEndpoint.swift in Sources */,
 				D862D6B525A10E8E001F0DDE /* HomeCoordinator.swift in Sources */,
 				D862D70725A11AA6001F0DDE /* SeasonData.swift in Sources */,
+				D862D75725A1820E001F0DDE /* RaceDetailInteractor.swift in Sources */,
 				D862D6B925A10E8F001F0DDE /* HomeInteractor.swift in Sources */,
 				D862D73F25A123D7001F0DDE /* Reloadable.swift in Sources */,
 				D862D6C925A10ED6001F0DDE /* ViewController.swift in Sources */,
 				D862D6B725A10E8F001F0DDE /* HomePresenter.swift in Sources */,
+				D862D75825A1820E001F0DDE /* RaceDetailService.swift in Sources */,
 				D862D71D25A120A6001F0DDE /* RoundCollectionViewCell.swift in Sources */,
+				D862D75525A1820E001F0DDE /* RaceDetailPresenter.swift in Sources */,
 				D862D73A25A123B4001F0DDE /* ReloadDataSource.swift in Sources */,
 				D862D67725A10D77001F0DDE /* AppDelegate.swift in Sources */,
 				D862D6BA25A10E8F001F0DDE /* HomeService.swift in Sources */,
 				D862D6B825A10E8F001F0DDE /* HomeViewController.swift in Sources */,
 				D862D6EC25A111BC001F0DDE /* ApiCompletion.swift in Sources */,
 				D862D6E225A110F2001F0DDE /* RequestError.swift in Sources */,
+				D862D75425A1820E001F0DDE /* RaceDetailFactory.swift in Sources */,
+				D862D75325A1820E001F0DDE /* RaceDetailCoordinator.swift in Sources */,
 				D862D6DD25A1108A001F0DDE /* HTTPStatusCode.swift in Sources */,
 				D862D6D525A11077001F0DDE /* HTTPMethod.swift in Sources */,
 				D862D6E725A11134001F0DDE /* ApiError.swift in Sources */,
