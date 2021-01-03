@@ -19,13 +19,15 @@ struct MRData: Decodable {
 }
 
 struct RaceTable: Decodable {
-    let races: [Races]
+    let races: [Race]
     
     enum CodingKeys: String, CodingKey {
         case races = "Races"
     }
 }
 
-struct Races: Decodable {
+struct Race: Decodable, RaceListDisplay {
     let season: String
+    let round: String
+    let raceName: String
 }

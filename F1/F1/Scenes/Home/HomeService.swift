@@ -1,8 +1,10 @@
 import Foundation
 
 protocol HomeServicing {
-    func getCurrentSeason()
+    func getCurrentSeason(completion: @escaping CompletionSeasonData)
 }
+
+typealias CompletionSeasonData = (Result<SeasonData, ApiError>) -> Void
 
 final class HomeService {
     init() {
@@ -11,13 +13,10 @@ final class HomeService {
 
 // MARK: - HomeServicing
 extension HomeService: HomeServicing {
-    func getCurrentSeason() {
+    func getCurrentSeason(completion: @escaping CompletionSeasonData) {
         Api<SeasonData>(endpoint: SeasonEndpoint.current).request { [weak self] result in
-            switch result {
-            case let .success(model):
-                print(model)
-            case let .failure(apiError):
-                print(apiError)
+            DispatchQueue.main.async {
+                completion(result.map(\.model))
             }
         }
     }
