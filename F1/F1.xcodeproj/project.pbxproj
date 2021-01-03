@@ -43,6 +43,7 @@
 		D862D75625A1820E001F0DDE /* RaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75025A1820E001F0DDE /* RaceDetailViewController.swift */; };
 		D862D75725A1820E001F0DDE /* RaceDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */; };
 		D862D75825A1820E001F0DDE /* RaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75225A1820E001F0DDE /* RaceDetailService.swift */; };
+		D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76025A18388001F0DDE /* ResultsEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +111,7 @@
 		D862D75025A1820E001F0DDE /* RaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailViewController.swift; sourceTree = "<group>"; };
 		D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractor.swift; sourceTree = "<group>"; };
 		D862D75225A1820E001F0DDE /* RaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailService.swift; sourceTree = "<group>"; };
+		D862D76025A18388001F0DDE /* ResultsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsEndpoint.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -313,6 +315,7 @@
 		D862D74C25A181D1001F0DDE /* RaceDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D862D75F25A1836E001F0DDE /* Service */,
 				D862D74D25A1820E001F0DDE /* RaceDetailCoordinator.swift */,
 				D862D74E25A1820E001F0DDE /* RaceDetailFactory.swift */,
 				D862D74F25A1820E001F0DDE /* RaceDetailPresenter.swift */,
@@ -321,6 +324,14 @@
 				D862D75225A1820E001F0DDE /* RaceDetailService.swift */,
 			);
 			path = RaceDetail;
+			sourceTree = "<group>";
+		};
+		D862D75F25A1836E001F0DDE /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D862D76025A18388001F0DDE /* ResultsEndpoint.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,6 +598,7 @@
 				D862D6E725A11134001F0DDE /* ApiError.swift in Sources */,
 				D862D67925A10D77001F0DDE /* SceneDelegate.swift in Sources */,
 				D862D6F625A112F1001F0DDE /* Api.swift in Sources */,
+				D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */,
 				D862D6F125A11203001F0DDE /* ApiEndpoint.swift in Sources */,
 				D862D6FB25A114E6001F0DDE /* Environment.swift in Sources */,
 			);

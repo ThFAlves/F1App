@@ -3,7 +3,7 @@ import Foundation
 protocol HomePresenting: AnyObject {
     var viewController: HomeDisplaying? { get set }
     func didNextStep(action: HomeAction)
-    func displayRaces(races: [Race])
+    func presentRaces(races: [Race])
 }
 
 final class HomePresenter {
@@ -21,7 +21,7 @@ extension HomePresenter: HomePresenting {
         coordinator.perform(action: action)
     }
     
-    func displayRaces(races: [Race]) {
+    func presentRaces(races: [Race]) {
         viewController?.displayRaceList(races: races)
     }
 }
