@@ -1,8 +1,6 @@
 import SnapKit
 import UIKit
 
-protocol RaceListDisplay {}
-
 protocol HomeDisplaying: AnyObject {
     func displayRaceList(races: [Race])
 }
@@ -31,14 +29,14 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
         collection.delegate = self
-        collection.register(RoundCollectionViewCell.self, forCellWithReuseIdentifier: "aaa")
+        collection.register(RoundCollectionViewCell.self, forCellWithReuseIdentifier: RoundCollectionViewCell.identifier)
         return collection
     }()
     
     private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, RaceListDisplay> = {
         let dataSource = CollectionViewDataSource<Layout.Section, RaceListDisplay>(view: collectionView)
         dataSource.itemProvider = { view, indexPath, item -> UICollectionViewCell? in
-            let cell = view.dequeueReusableCell(withReuseIdentifier: "aaa", for: indexPath) as? RoundCollectionViewCell
+            let cell = view.dequeueReusableCell(withReuseIdentifier: RoundCollectionViewCell.identifier, for: indexPath) as? RoundCollectionViewCell
             cell?.setup(info: item)
             return cell
         }
@@ -78,6 +76,6 @@ extension HomeViewController: HomeDisplaying {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        interactor.selectRound()
+        interactor.didSelectItem(row: indexPath.row)
     }
 }

@@ -44,6 +44,8 @@
 		D862D75725A1820E001F0DDE /* RaceDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */; };
 		D862D75825A1820E001F0DDE /* RaceDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D75225A1820E001F0DDE /* RaceDetailService.swift */; };
 		D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76025A18388001F0DDE /* ResultsEndpoint.swift */; };
+		D862D76A25A22359001F0DDE /* DriverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */; };
+		D862D77325A2246B001F0DDE /* DriverData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D77225A2246B001F0DDE /* DriverData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +114,8 @@
 		D862D75125A1820E001F0DDE /* RaceDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractor.swift; sourceTree = "<group>"; };
 		D862D75225A1820E001F0DDE /* RaceDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailService.swift; sourceTree = "<group>"; };
 		D862D76025A18388001F0DDE /* ResultsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsEndpoint.swift; sourceTree = "<group>"; };
+		D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCollectionViewCell.swift; sourceTree = "<group>"; };
+		D862D77225A2246B001F0DDE /* DriverData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverData.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -315,6 +319,8 @@
 		D862D74C25A181D1001F0DDE /* RaceDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D862D77125A2245F001F0DDE /* Model */,
+				D862D76825A2233E001F0DDE /* View */,
 				D862D75F25A1836E001F0DDE /* Service */,
 				D862D74D25A1820E001F0DDE /* RaceDetailCoordinator.swift */,
 				D862D74E25A1820E001F0DDE /* RaceDetailFactory.swift */,
@@ -332,6 +338,22 @@
 				D862D76025A18388001F0DDE /* ResultsEndpoint.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		D862D76825A2233E001F0DDE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D862D77125A2245F001F0DDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D862D77225A2246B001F0DDE /* DriverData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +610,8 @@
 				D862D73A25A123B4001F0DDE /* ReloadDataSource.swift in Sources */,
 				D862D67725A10D77001F0DDE /* AppDelegate.swift in Sources */,
 				D862D6BA25A10E8F001F0DDE /* HomeService.swift in Sources */,
+				D862D77325A2246B001F0DDE /* DriverData.swift in Sources */,
+				D862D76A25A22359001F0DDE /* DriverCollectionViewCell.swift in Sources */,
 				D862D6B825A10E8F001F0DDE /* HomeViewController.swift in Sources */,
 				D862D6EC25A111BC001F0DDE /* ApiCompletion.swift in Sources */,
 				D862D6E225A110F2001F0DDE /* RequestError.swift in Sources */,

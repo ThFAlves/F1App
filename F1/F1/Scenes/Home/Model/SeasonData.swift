@@ -1,5 +1,7 @@
 import Foundation
 
+protocol RaceListDisplay {}
+
 struct SeasonData: Decodable {
     let data: MRData
     

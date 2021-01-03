@@ -19,6 +19,8 @@ final class HomeCoordinator {
 // MARK: - HomeCoordinating
 extension HomeCoordinator: HomeCoordinating {
     func perform(action: HomeAction) {
-        viewController?.navigationController?.pushViewController(RaceDetailFactory.make(round: "8"), animated: true)
+        if case let .detail(round) = action {
+            viewController?.navigationController?.pushViewController(RaceDetailFactory.make(round: round), animated: true)
+        }
     }
 }

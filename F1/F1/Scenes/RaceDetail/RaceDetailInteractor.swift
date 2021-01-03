@@ -23,7 +23,8 @@ extension RaceDetailInteractor: RaceDetailInteracting {
         service.getResult(round: round) { [weak self] result in
             switch result {
             case let .success(model):
-                print(model)
+                let drivers = model.data.raceTable.races.first?.results ?? []
+                self?.presenter.presentDrivers(drivers: drivers)
             case let .failure(apiError):
                 print(apiError)
             }

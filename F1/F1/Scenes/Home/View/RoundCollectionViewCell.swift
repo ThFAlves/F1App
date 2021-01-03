@@ -1,6 +1,8 @@
 import UIKit
 
 final class RoundCollectionViewCell: UICollectionViewCell {
+    static let identifier = "RoundCollectionViewCell"
+    
     private lazy var raceNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)

@@ -3,6 +3,7 @@ import Foundation
 protocol RaceDetailPresenting: AnyObject {
     var viewController: RaceDetailDisplaying? { get set }
     func didNextStep(action: RaceDetailAction)
+    func presentDrivers(drivers: [DriverResult])
 }
 
 final class RaceDetailPresenter {
@@ -18,5 +19,9 @@ final class RaceDetailPresenter {
 extension RaceDetailPresenter: RaceDetailPresenting {
     func didNextStep(action: RaceDetailAction) {
         coordinator.perform(action: action)
+    }
+    
+    func presentDrivers(drivers: [DriverResult]) {
+        viewController?.displayDriverResult(driver: drivers)
     }
 }
