@@ -3,10 +3,51 @@ import UIKit
 final class RoundCollectionViewCell: UICollectionViewCell {
     static let identifier = "RoundCollectionViewCell"
     
+    private lazy var localityLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var locationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var circuitStack: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(localityLabel)
+        stack.addArrangedSubview(locationLabel)
+        stack.axis = .vertical
+        stack.spacing = 4
+        return stack
+    }()
+    
     private lazy var raceNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = .white
         return label
+    }()
+    
+    private lazy var circuitNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .white
+        return label
+    }()
+    
+    private lazy var stack: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(raceNameLabel)
+        stack.addArrangedSubview(circuitNameLabel)
+        stack.addArrangedSubview(circuitStack)
+        stack.axis = .vertical
+        stack.distribution = .equalCentering
+        return stack
     }()
     
     override init(frame: CGRect) {
@@ -24,17 +65,31 @@ final class RoundCollectionViewCell: UICollectionViewCell {
             return
         }
         raceNameLabel.text = race.raceName
+        circuitNameLabel.text = race.circuit.name
+        localityLabel.text = "\(race.circuit.location.locality) \(race.circuit.location.country)"
+        locationLabel.text = "Lat:\(race.circuit.location.lat) Lon:\(race.circuit.location.long)"
     }
 }
 
 extension RoundCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
-        self.addSubview(raceNameLabel)
+        self.addSubview(stack)
     }
     
     func setupConstraints() {
-        raceNameLabel.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview()
+        stack.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
         }
+    }
+    
+    func configureViews() {
+        self.layer.cornerRadius = 16.0
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.layer.masksToBounds = true
+    }
+    
+    func configureStyles() {
+        self.backgroundColor = Colors.card
     }
 }

@@ -59,7 +59,7 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
     }
 
     override func configureViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.base
     }
 }
 

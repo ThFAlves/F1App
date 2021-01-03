@@ -23,10 +23,11 @@ final class DriverCollectionViewCell: UICollectionViewCell {
         guard let driver = info as? DriverResult else {
             return
         }
-        raceNameLabel.text = driver.constructor.name
+        raceNameLabel.text = driver.driver.familyName
     }
 }
 
+// MARK: - ViewConfiguration
 extension DriverCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
         self.addSubview(raceNameLabel)
@@ -36,6 +37,10 @@ extension DriverCollectionViewCell: ViewConfiguration {
         raceNameLabel.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
         }
+    }
+    
+    func configureStyles() {
+        self.backgroundColor = .orange
     }
 }
 

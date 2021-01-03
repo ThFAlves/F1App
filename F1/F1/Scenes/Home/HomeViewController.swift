@@ -8,7 +8,7 @@ protocol HomeDisplaying: AnyObject {
 private extension HomeViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
-        static let itemHeight: CGFloat = 280
+        static let itemHeight: CGFloat = 140
         static let offset: CGFloat = 20
     }
     
@@ -23,8 +23,8 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = .init(width: Layout.Size.screenWidth, height: Layout.Size.itemHeight)
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.itemSize = .init(width: Layout.Size.screenWidth - 32, height: Layout.Size.itemHeight)
+        flowLayout.minimumLineSpacing = 12
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
@@ -47,7 +47,6 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.loadCurrentSeason()
-        
     }
 
     override func buildViewHierarchy() {
@@ -61,8 +60,8 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     }
 
     override func configureViews() {
-        view.backgroundColor = .white
-        
+        title = "F1 Challenge"
+        view.backgroundColor = Colors.base
     }
 }
 

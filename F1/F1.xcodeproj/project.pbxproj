@@ -46,6 +46,7 @@
 		D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76025A18388001F0DDE /* ResultsEndpoint.swift */; };
 		D862D76A25A22359001F0DDE /* DriverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */; };
 		D862D77325A2246B001F0DDE /* DriverData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D77225A2246B001F0DDE /* DriverData.swift */; };
+		D862D78525A2809A001F0DDE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D78425A2809A001F0DDE /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		D862D76025A18388001F0DDE /* ResultsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsEndpoint.swift; sourceTree = "<group>"; };
 		D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCollectionViewCell.swift; sourceTree = "<group>"; };
 		D862D77225A2246B001F0DDE /* DriverData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverData.swift; sourceTree = "<group>"; };
+		D862D78425A2809A001F0DDE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				D862D6C825A10ED6001F0DDE /* ViewController.swift */,
+				D862D78425A2809A001F0DDE /* Color.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 			files = (
 				D862D75625A1820E001F0DDE /* RaceDetailViewController.swift in Sources */,
 				D862D6B625A10E8E001F0DDE /* HomeFactory.swift in Sources */,
+				D862D78525A2809A001F0DDE /* Color.swift in Sources */,
 				D862D73225A12380001F0DDE /* CollectionViewDataSource.swift in Sources */,
 				D862D70125A1180E001F0DDE /* SeasonEndpoint.swift in Sources */,
 				D862D6B525A10E8E001F0DDE /* HomeCoordinator.swift in Sources */,
