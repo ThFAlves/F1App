@@ -4,6 +4,7 @@ protocol RaceDetailPresenting: AnyObject {
     var viewController: RaceDetailDisplaying? { get set }
     func didNextStep(action: RaceDetailAction)
     func presentDrivers(drivers: [DriverResult])
+    func presentTitle(_ title: String)
 }
 
 final class RaceDetailPresenter {
@@ -23,5 +24,9 @@ extension RaceDetailPresenter: RaceDetailPresenting {
     
     func presentDrivers(drivers: [DriverResult]) {
         viewController?.displayDriverResult(driver: drivers)
+    }
+    
+    func presentTitle(_ title: String) {
+        viewController?.displayTitle(title)
     }
 }

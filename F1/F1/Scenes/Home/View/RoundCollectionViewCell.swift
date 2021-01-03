@@ -73,7 +73,7 @@ final class RoundCollectionViewCell: UICollectionViewCell {
 
 extension RoundCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
-        self.addSubview(stack)
+        addSubview(stack)
     }
     
     func setupConstraints() {
@@ -83,13 +83,13 @@ extension RoundCollectionViewCell: ViewConfiguration {
     }
     
     func configureViews() {
-        self.layer.cornerRadius = 16.0
-        self.layer.borderWidth = 1.0
-        self.layer.borderColor = UIColor.clear.cgColor
-        self.layer.masksToBounds = true
+        layer.cornerRadius = 16.0
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.clear.cgColor
+        layer.masksToBounds = true
     }
     
     func configureStyles() {
-        self.backgroundColor = Colors.card
+        backgroundColor = Colors.card
     }
 }

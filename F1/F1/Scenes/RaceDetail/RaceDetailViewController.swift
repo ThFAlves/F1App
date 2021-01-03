@@ -2,6 +2,7 @@ import UIKit
 
 protocol RaceDetailDisplaying: AnyObject {
     func displayDriverResult(driver: [DriverResult])
+    func displayTitle(_ titleScreen: String)
 }
 
 private extension RaceDetailViewController.Layout {
@@ -23,7 +24,7 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = .init(width: Layout.Size.screenWidth, height: Layout.Size.itemHeight)
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 12
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
@@ -68,6 +69,10 @@ extension RaceDetailViewController: RaceDetailDisplaying {
     func displayDriverResult(driver: [DriverResult]) {
         collectionView.dataSource = collectionViewDataSource
         collectionViewDataSource.add(items: driver, to: .main)
+    }
+    
+    func displayTitle(_ titleScreen: String) {
+        title = titleScreen
     }
 }
 
