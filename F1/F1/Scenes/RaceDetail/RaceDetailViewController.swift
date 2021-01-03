@@ -1,14 +1,13 @@
-import SnapKit
 import UIKit
 
-protocol HomeDisplaying: AnyObject {
-    func displayRaceList(races: [Race])
+protocol RaceDetailDisplaying: AnyObject {
+    func displayDriverResult(driver: [DriverResult])
 }
 
-private extension HomeViewController.Layout {
+private extension RaceDetailViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
-        static let itemHeight: CGFloat = 280
+        static let itemHeight: CGFloat = 140
         static let offset: CGFloat = 20
     }
     
@@ -17,7 +16,7 @@ private extension HomeViewController.Layout {
     }
 }
 
-final class HomeViewController: ViewController<HomeInteracting, UIView> {
+final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIView> {
     fileprivate enum Layout { }
 
     private lazy var collectionView: UICollectionView = {
@@ -29,14 +28,14 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
         collection.delegate = self
-        collection.register(RoundCollectionViewCell.self, forCellWithReuseIdentifier: RoundCollectionViewCell.identifier)
+        collection.register(DriverCollectionViewCell.self, forCellWithReuseIdentifier: DriverCollectionViewCell.identifier)
         return collection
     }()
     
-    private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, RaceListDisplay> = {
-        let dataSource = CollectionViewDataSource<Layout.Section, RaceListDisplay>(view: collectionView)
+    private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, DriverResultListDisplay> = {
+        let dataSource = CollectionViewDataSource<Layout.Section, DriverResultListDisplay>(view: collectionView)
         dataSource.itemProvider = { view, indexPath, item -> UICollectionViewCell? in
-            let cell = view.dequeueReusableCell(withReuseIdentifier: RoundCollectionViewCell.identifier, for: indexPath) as? RoundCollectionViewCell
+            let cell = view.dequeueReusableCell(withReuseIdentifier: DriverCollectionViewCell.identifier, for: indexPath) as? DriverCollectionViewCell
             cell?.setup(info: item)
             return cell
         }
@@ -46,8 +45,7 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.loadCurrentSeason()
-        
+        interactor.getResults()
     }
 
     override func buildViewHierarchy() {
@@ -62,20 +60,18 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
 
     override func configureViews() {
         view.backgroundColor = .white
-        
     }
 }
 
-// MARK: - HomeDisplaying
-extension HomeViewController: HomeDisplaying {
-    func displayRaceList(races: [Race]) {
+// MARK: - RaceDetailDisplaying
+extension RaceDetailViewController: RaceDetailDisplaying {
+    func displayDriverResult(driver: [DriverResult]) {
         collectionView.dataSource = collectionViewDataSource
-        collectionViewDataSource.add(items: races, to: .main)
+        collectionViewDataSource.add(items: driver, to: .main)
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        interactor.didSelectItem(row: indexPath.row)
-    }
+// MARK: - UICollectionViewDelegate
+extension RaceDetailViewController: UICollectionViewDelegate {
+    
 }

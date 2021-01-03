@@ -1,7 +1,7 @@
 import UIKit
 
-final class RoundCollectionViewCell: UICollectionViewCell {
-    static let identifier = "RoundCollectionViewCell"
+final class DriverCollectionViewCell: UICollectionViewCell {
+    static let identifier = "DriverCollectionViewCell"
     
     private lazy var raceNameLabel: UILabel = {
         let label = UILabel()
@@ -19,15 +19,15 @@ final class RoundCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(info: RaceListDisplay) {
-        guard let race = info as? Race else {
+    func setup(info: DriverResultListDisplay) {
+        guard let driver = info as? DriverResult else {
             return
         }
-        raceNameLabel.text = race.raceName
+        raceNameLabel.text = driver.constructor.name
     }
 }
 
-extension RoundCollectionViewCell: ViewConfiguration {
+extension DriverCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
         self.addSubview(raceNameLabel)
     }
@@ -38,3 +38,4 @@ extension RoundCollectionViewCell: ViewConfiguration {
         }
     }
 }
+

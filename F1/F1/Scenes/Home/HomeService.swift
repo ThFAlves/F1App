@@ -14,7 +14,7 @@ final class HomeService {
 // MARK: - HomeServicing
 extension HomeService: HomeServicing {
     func getCurrentSeason(completion: @escaping CompletionSeasonData) {
-        Api<SeasonData>(endpoint: SeasonEndpoint.current).request { [weak self] result in
+        Api<SeasonData>(endpoint: SeasonEndpoint.current).request { result in
             DispatchQueue.main.async {
                 completion(result.map(\.model))
             }

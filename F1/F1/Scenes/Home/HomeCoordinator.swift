@@ -1,6 +1,7 @@
 import UIKit
 
 enum HomeAction {
+    case detail(round: String)
 }
 
 protocol HomeCoordinating: AnyObject {
@@ -18,5 +19,8 @@ final class HomeCoordinator {
 // MARK: - HomeCoordinating
 extension HomeCoordinator: HomeCoordinating {
     func perform(action: HomeAction) {
+        if case let .detail(round) = action {
+            viewController?.navigationController?.pushViewController(RaceDetailFactory.make(round: round), animated: true)
+        }
     }
 }
