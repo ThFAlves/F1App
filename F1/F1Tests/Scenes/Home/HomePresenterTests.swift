@@ -55,30 +55,30 @@ final class HomePresenterTests: XCTestCase {
     }()
     
     // MARK: - Public Methods
-    func testL() {
+    func testDidNextStep_WhenSelectDetail_ShouldOpenDetail() {
         sut.didNextStep(action: .detail(round: "1"))
         XCTAssertEqual(coordinatorSpy.action, [.detail(round: "1")])
     }
     
-    func testFKFK() {
+    func testPresentError_WhenReceiveBadRequest_ShouldPresentError() {
         sut.presentError(apiError: .badRequest)
         XCTAssertEqual(viewControllerSpy.callDisplayErrorCount, 1)
         XCTAssertNotNil(viewControllerSpy.apiError)
     }
     
-    func testFJRRI() {
+    func testPresentRaces_WhenReceiveEmptyRaces_ShouldPresentRaces() {
         sut.presentRaces(races: [])
         XCTAssertEqual(viewControllerSpy.callDisplayRaceListCount, 1)
 //        XCTAssertEqual(viewControllerSpy.races, [])
     }
     
-    func testFJFIFU() {
+    func testPresentStartLoading_WhenStartLoading_ShouldPresentLoading() {
         sut.presentStartLoading()
         XCTAssertEqual(viewControllerSpy.callDisplayStartLoadingCount, 1)
         XCTAssertEqual(viewControllerSpy.callDisplayStopLoadingCount, 0)
     }
     
-    func testFJFIdFU() {
+    func testPresentStopLoading_WhenStopLoading_WhenPresentStopLoading() {
         sut.presentStopLoading()
         XCTAssertEqual(viewControllerSpy.callDisplayStartLoadingCount, 0)
         XCTAssertEqual(viewControllerSpy.callDisplayStopLoadingCount, 1)

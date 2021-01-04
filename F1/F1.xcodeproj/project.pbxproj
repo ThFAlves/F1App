@@ -48,6 +48,8 @@
 		D862D78525A2809A001F0DDE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D78425A2809A001F0DDE /* Color.swift */; };
 		D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */; };
 		D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */; };
+		D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */; };
+		D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "F1Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractorTests.swift; sourceTree = "<group>"; };
+		D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailPresenterTests.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,11 +369,29 @@
 		D862D79825A2B253001F0DDE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
+				D862D7B125A2C38A001F0DDE /* RaceDetail */,
+				D862D7B025A2C37F001F0DDE /* Home */,
 				D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */,
-				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D862D7B025A2C37F001F0DDE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
+				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D862D7B125A2C38A001F0DDE /* RaceDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */,
+				D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */,
+			);
+			path = RaceDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -652,6 +674,8 @@
 			files = (
 				D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */,
 				D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */,
+				D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */,
+				D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
