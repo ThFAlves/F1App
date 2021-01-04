@@ -65,20 +65,48 @@ final class RaceDetailInteractorTests: XCTestCase {
     
     private lazy var sut = RaceDetailInteractor(round: "2", service: serviceSpy, presenter: presenterSpy)
     
+    private func getData(in fileName: String) -> DriverData {
+        let trackingData = try! MockCodable<DriverData>().loadCodableObject(
+            resource: fileName,
+            typeDecoder: .useDefaultKeys)
+        return trackingData
+    }
+    
     // MARK: - Public Methods
-    func testLd() {
+    func testGetResult_WhenResulIsFailure_ShouldPresentError() {
         serviceSpy.result = .failure(.timeout)
         sut.getResults()
         XCTAssertEqual(presenterSpy.callStartLoadingCount, 1)
         XCTAssertEqual(presenterSpy.callStopLoadingCount, 1)
         XCTAssertEqual(presenterSpy.callPresentErrorCount, 1)
-        XCTAssertEqual(presenterSpy.action, [])
         XCTAssertNotNil(presenterSpy.apiError)
     }
     
-    func testKf() {
-        sut.didSelectItem(row: 1)
-        XCTAssertEqual(presenterSpy.action, [.open(url: URL(string: "testeUrl")!)])
+    func testGetResult_WhenResulIsSuccess_ShouldPresentData() {
+        serviceSpy.result = .success(getData(in: "mockResults"))
+        sut.getResults()
+        XCTAssertEqual(presenterSpy.callStartLoadingCount, 1)
+        XCTAssertEqual(presenterSpy.callStopLoadingCount, 1)
+        XCTAssertEqual(presenterSpy.callPresentErrorCount, 0)
+        XCTAssertNil(presenterSpy.apiError)
+    }
+    
+    func testDidSelectItem_WhenRacesIsEmpty_ShouldIgnoreSelect() {
+        sut.didSelectItem(row: 0)
+        XCTAssertEqual(presenterSpy.action, [])
+    }
+    
+    func testDidSelectItem_WhenRacesIsValidAndContains_ShouldCallAction() throws {
+        let url = try XCTUnwrap(URL(string: "http://en.wikipedia.org/wiki/Lewis_Hamilton"))
+        sut.drivers = getData(in: "mockResults").data.raceTable.races.first?.results ?? []
+        sut.didSelectItem(row: 0)
+        XCTAssertEqual(presenterSpy.action, [.open(url: url)])
+    }
+    
+    func testDidSelectItem_WhenRacesIndexNotContains_ShouldIgnoreAction() {
+        sut.drivers = getData(in: "mockResults").data.raceTable.races.first?.results ?? []
+        sut.didSelectItem(row: 20)
+        XCTAssertEqual(presenterSpy.action, [])
     }
 }
 

@@ -15,10 +15,7 @@ private final class RaceDetailCoordinatorSpy: RaceDetailCoordinating {
 }
 
 final class RaceDetailViewControllerSpy: RaceDetailDisplaying {
-    
-
-    
-    
+        
     // MARK: - Variables
     private(set) var callDisplayDriverResultCount = 0
     private(set) var result = [DriverResult]()
@@ -64,6 +61,13 @@ final class RaceDetailPresenterTests: XCTestCase {
         return sut
     }()
     
+    private func getData(in fileName: String) -> DriverData {
+        let trackingData = try! MockCodable<DriverData>().loadCodableObject(
+            resource: fileName,
+            typeDecoder: .useDefaultKeys)
+        return trackingData
+    }
+    
     // MARK: - Public Methods
     func testDidNextStep_WhenReceiveValidUrl_ShouldOpenWebView() throws {
         let url = try XCTUnwrap(URL(string: "testUrl"))
@@ -80,7 +84,14 @@ final class RaceDetailPresenterTests: XCTestCase {
     func testPresentDrivers_WhenEmpty_ShouldUpdateScreen() {
         sut.presentDrivers(drivers: [])
         XCTAssertEqual(viewControllerSpy.callDisplayDriverResultCount, 1)
-//        XCTAssertEqual(viewControllerSpy.races, [])
+        XCTAssertEqual(viewControllerSpy.result.count, 0)
+    }
+ 
+    func testPresentDrivers_WhenNotEmpty_ShouldUpdateScreen() throws {
+        let result = try XCTUnwrap(getData(in: "mockResults").data.raceTable.races.first?.results)
+        sut.presentDrivers(drivers: result)
+        XCTAssertEqual(viewControllerSpy.callDisplayDriverResultCount, 1)
+        XCTAssertEqual(viewControllerSpy.result.count, 20)
     }
     
     func testPresentTitle_WhenReceiveRaceName_ShouldUpdateScreen() {

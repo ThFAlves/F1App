@@ -8,7 +8,7 @@ protocol HomeInteracting: AnyObject {
 final class HomeInteractor {
     private let service: HomeServicing
     private let presenter: HomePresenting
-    private var races: [Race] = []
+    var races: [Race] = []
 
     init(service: HomeServicing, presenter: HomePresenting) {
         self.service = service

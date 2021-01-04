@@ -58,6 +58,13 @@ final class HomeInteractorTests: XCTestCase {
     
     private lazy var sut = HomeInteractor(service: serviceSpy, presenter: presenterSpy)
     
+    private func getData(in fileName: String) -> SeasonData {
+        let trackingData = try! MockCodable<SeasonData>().loadCodableObject(
+            resource: fileName,
+            typeDecoder: .useDefaultKeys)
+        return trackingData
+    }
+    
     // MARK: - Public Methods
     func testLoadCurrentSeason_WhenResultIsError_ShouldPresentError() {
         serviceSpy.result = .failure(.timeout)
@@ -67,6 +74,34 @@ final class HomeInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.callPresentErrorCount, 1)
         XCTAssertEqual(presenterSpy.action, [])
         XCTAssertNotNil(presenterSpy.apiError)
+    }
+    
+    func testLoadCurrentSeason_WhenResultIsSuccess_ShouldPresentData() {
+        serviceSpy.result = .success(getData(in: "mockSeasonData"))
+        sut.loadCurrentSeason()
+        XCTAssertEqual(presenterSpy.callPresentStartLoadingCount, 1)
+        XCTAssertEqual(presenterSpy.callPresentStopLoadingCount, 1)
+        XCTAssertEqual(presenterSpy.callPresentErrorCount, 0)
+        XCTAssertEqual(presenterSpy.callRacesCount, 1)
+        XCTAssertEqual(presenterSpy.races.count, 17)
+        XCTAssertNil(presenterSpy.apiError)
+    }
+    
+    func testDidSelectItem_WhenRacesIsEmpty_ShouldIgnoreSelect() {
+        sut.didSelectItem(row: 0)
+        XCTAssertEqual(presenterSpy.action, [])
+    }
+    
+    func testDidSelectItem_WhenRacesIsValidAndContains_ShouldCallAction() {
+        sut.races = getData(in: "mockSeasonData").data.raceTable.races
+        sut.didSelectItem(row: 0)
+        XCTAssertEqual(presenterSpy.action, [.detail(round: "1")])
+    }
+    
+    func testDidSelectItem_WhenRacesIndexNotContains_ShouldIgnoreAction() {
+        sut.races = getData(in: "mockSeasonData").data.raceTable.races
+        sut.didSelectItem(row: 20)
+        XCTAssertEqual(presenterSpy.action, [])
     }
 }
 

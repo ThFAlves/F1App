@@ -54,6 +54,13 @@ final class HomePresenterTests: XCTestCase {
         return sut
     }()
     
+    private func getData(in fileName: String) -> SeasonData {
+        let trackingData = try! MockCodable<SeasonData>().loadCodableObject(
+            resource: fileName,
+            typeDecoder: .useDefaultKeys)
+        return trackingData
+    }
+    
     // MARK: - Public Methods
     func testDidNextStep_WhenSelectDetail_ShouldOpenDetail() {
         sut.didNextStep(action: .detail(round: "1"))
@@ -67,9 +74,9 @@ final class HomePresenterTests: XCTestCase {
     }
     
     func testPresentRaces_WhenReceiveEmptyRaces_ShouldPresentRaces() {
-        sut.presentRaces(races: [])
+        sut.presentRaces(races: getData(in: "mockSeasonData").data.raceTable.races)
         XCTAssertEqual(viewControllerSpy.callDisplayRaceListCount, 1)
-//        XCTAssertEqual(viewControllerSpy.races, [])
+        XCTAssertEqual(viewControllerSpy.races.count, 17)
     }
     
     func testPresentStartLoading_WhenStartLoading_ShouldPresentLoading() {

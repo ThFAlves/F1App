@@ -50,6 +50,9 @@
 		D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */; };
 		D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */; };
 		D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */; };
+		D862D7C025A2C9A0001F0DDE /* MockCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */; };
+		D862D7C925A2CB41001F0DDE /* mockSeasonData.json in Resources */ = {isa = PBXBuildFile; fileRef = D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */; };
+		D862D7D225A2D003001F0DDE /* mockResults.json in Resources */ = {isa = PBXBuildFile; fileRef = D862D7CE25A2CFD9001F0DDE /* mockResults.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +128,9 @@
 		D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractorTests.swift; sourceTree = "<group>"; };
 		D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailPresenterTests.swift; sourceTree = "<group>"; };
+		D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCodable.swift; sourceTree = "<group>"; };
+		D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockSeasonData.json; sourceTree = "<group>"; };
+		D862D7CE25A2CFD9001F0DDE /* mockResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockResults.json; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +227,7 @@
 			children = (
 				D862D79825A2B253001F0DDE /* Scenes */,
 				D862D68F25A10D7A001F0DDE /* Info.plist */,
+				D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */,
 			);
 			path = F1Tests;
 			sourceTree = "<group>";
@@ -379,6 +386,7 @@
 		D862D7B025A2C37F001F0DDE /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D862D7C425A2CACF001F0DDE /* Mock */,
 				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
 				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
 			);
@@ -388,10 +396,27 @@
 		D862D7B125A2C38A001F0DDE /* RaceDetail */ = {
 			isa = PBXGroup;
 			children = (
+				D862D7CD25A2CFC5001F0DDE /* Mock */,
 				D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */,
 				D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */,
 			);
 			path = RaceDetail;
+			sourceTree = "<group>";
+		};
+		D862D7C425A2CACF001F0DDE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		D862D7CD25A2CFC5001F0DDE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7CE25A2CFD9001F0DDE /* mockResults.json */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,6 +537,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D862D7D225A2D003001F0DDE /* mockResults.json in Resources */,
+				D862D7C925A2CB41001F0DDE /* mockSeasonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */,
+				D862D7C025A2C9A0001F0DDE /* MockCodable.swift in Sources */,
 				D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */,
 				D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */,
 				D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */,
