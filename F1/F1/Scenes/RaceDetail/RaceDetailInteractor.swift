@@ -10,7 +10,7 @@ final class RaceDetailInteractor {
     private let presenter: RaceDetailPresenting
     
     private let round: String
-    private var drivers: [DriverResult] = []
+    var drivers: [DriverResult] = []
 
     init(round: String, service: RaceDetailServicing, presenter: RaceDetailPresenting) {
         self.service = service

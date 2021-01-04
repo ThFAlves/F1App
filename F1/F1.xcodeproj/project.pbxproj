@@ -14,7 +14,6 @@
 		D862D67925A10D77001F0DDE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D67825A10D77001F0DDE /* SceneDelegate.swift */; };
 		D862D68025A10D79001F0DDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D862D67F25A10D79001F0DDE /* Assets.xcassets */; };
 		D862D68325A10D79001F0DDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D862D68125A10D79001F0DDE /* LaunchScreen.storyboard */; };
-		D862D68E25A10D7A001F0DDE /* F1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D68D25A10D7A001F0DDE /* F1Tests.swift */; };
 		D862D69925A10D7A001F0DDE /* F1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D69825A10D7A001F0DDE /* F1UITests.swift */; };
 		D862D6B525A10E8E001F0DDE /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6AF25A10E8E001F0DDE /* HomeCoordinator.swift */; };
 		D862D6B625A10E8E001F0DDE /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6B025A10E8E001F0DDE /* HomeFactory.swift */; };
@@ -47,6 +46,13 @@
 		D862D76A25A22359001F0DDE /* DriverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */; };
 		D862D77325A2246B001F0DDE /* DriverData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D77225A2246B001F0DDE /* DriverData.swift */; };
 		D862D78525A2809A001F0DDE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D78425A2809A001F0DDE /* Color.swift */; };
+		D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */; };
+		D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */; };
+		D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */; };
+		D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */; };
+		D862D7C025A2C9A0001F0DDE /* MockCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */; };
+		D862D7C925A2CB41001F0DDE /* mockSeasonData.json in Resources */ = {isa = PBXBuildFile; fileRef = D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */; };
+		D862D7D225A2D003001F0DDE /* mockResults.json in Resources */ = {isa = PBXBuildFile; fileRef = D862D7CE25A2CFD9001F0DDE /* mockResults.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +88,6 @@
 		D862D68225A10D79001F0DDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D862D68425A10D79001F0DDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D862D68925A10D79001F0DDE /* F1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = F1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D862D68D25A10D7A001F0DDE /* F1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F1Tests.swift; sourceTree = "<group>"; };
 		D862D68F25A10D7A001F0DDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D862D69425A10D7A001F0DDE /* F1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = F1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D862D69825A10D7A001F0DDE /* F1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = F1UITests.swift; sourceTree = "<group>"; };
@@ -118,6 +123,14 @@
 		D862D76925A22359001F0DDE /* DriverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverCollectionViewCell.swift; sourceTree = "<group>"; };
 		D862D77225A2246B001F0DDE /* DriverData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverData.swift; sourceTree = "<group>"; };
 		D862D78425A2809A001F0DDE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "F1Tests-Bridging-Header.h"; sourceTree = "<group>"; };
+		D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
+		D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
+		D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailInteractorTests.swift; sourceTree = "<group>"; };
+		D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailPresenterTests.swift; sourceTree = "<group>"; };
+		D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCodable.swift; sourceTree = "<group>"; };
+		D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockSeasonData.json; sourceTree = "<group>"; };
+		D862D7CE25A2CFD9001F0DDE /* mockResults.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockResults.json; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,8 +225,9 @@
 		D862D68C25A10D7A001F0DDE /* F1Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D862D68D25A10D7A001F0DDE /* F1Tests.swift */,
+				D862D79825A2B253001F0DDE /* Scenes */,
 				D862D68F25A10D7A001F0DDE /* Info.plist */,
+				D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */,
 			);
 			path = F1Tests;
 			sourceTree = "<group>";
@@ -359,6 +373,52 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		D862D79825A2B253001F0DDE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7B125A2C38A001F0DDE /* RaceDetail */,
+				D862D7B025A2C37F001F0DDE /* Home */,
+				D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		D862D7B025A2C37F001F0DDE /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7C425A2CACF001F0DDE /* Mock */,
+				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
+				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		D862D7B125A2C38A001F0DDE /* RaceDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7CD25A2CFC5001F0DDE /* Mock */,
+				D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */,
+				D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */,
+			);
+			path = RaceDetail;
+			sourceTree = "<group>";
+		};
+		D862D7C425A2CACF001F0DDE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7C525A2CAF0001F0DDE /* mockSeasonData.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		D862D7CD25A2CFC5001F0DDE /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D862D7CE25A2CFD9001F0DDE /* mockResults.json */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -434,6 +494,7 @@
 					};
 					D862D68825A10D79001F0DDE = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 						TestTargetID = D862D67225A10D77001F0DDE;
 					};
 					D862D69325A10D7A001F0DDE = {
@@ -476,6 +537,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D862D7D225A2D003001F0DDE /* mockResults.json in Resources */,
+				D862D7C925A2CB41001F0DDE /* mockSeasonData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +699,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D862D68E25A10D7A001F0DDE /* F1Tests.swift in Sources */,
+				D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */,
+				D862D7C025A2C9A0001F0DDE /* MockCodable.swift in Sources */,
+				D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */,
+				D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */,
+				D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,6 +904,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TX3RG9QDZ9;
 				INFOPLIST_FILE = F1Tests/Info.plist;
@@ -848,6 +916,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = thiagoAlves.F1Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "F1Tests/Scenes/F1Tests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/F1.app/F1";
@@ -860,6 +930,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TX3RG9QDZ9;
 				INFOPLIST_FILE = F1Tests/Info.plist;
@@ -871,6 +942,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = thiagoAlves.F1Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "F1Tests/Scenes/F1Tests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/F1.app/F1";
