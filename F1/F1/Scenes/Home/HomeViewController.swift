@@ -3,6 +3,7 @@ import UIKit
 
 protocol HomeDisplaying: AnyObject {
     func displayRaceList(races: [Race])
+    func displayError(apiError: ApiError)
     func startLoading()
     func stopLoading()
 }
@@ -75,6 +76,16 @@ extension HomeViewController: HomeDisplaying {
     func displayRaceList(races: [Race]) {
         collectionView.dataSource = collectionViewDataSource
         collectionViewDataSource.add(items: races, to: .main)
+    }
+    
+    func displayError(apiError: ApiError) {
+        let alert = UIAlertController(title: "Ops! Algo deu errado", message: apiError.message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.interactor.loadCurrentSeason()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     func startLoading() {

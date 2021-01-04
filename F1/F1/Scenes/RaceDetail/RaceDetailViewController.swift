@@ -3,6 +3,7 @@ import UIKit
 protocol RaceDetailDisplaying: AnyObject {
     func displayDriverResult(driver: [DriverResult])
     func displayTitle(_ titleScreen: String)
+    func displayError(apiError: ApiError)
     func startLoading()
     func stopLoading()
 }
@@ -78,6 +79,16 @@ extension RaceDetailViewController: RaceDetailDisplaying {
     
     func displayTitle(_ titleScreen: String) {
         title = titleScreen
+    }
+    
+    func displayError(apiError: ApiError) {
+        let alert = UIAlertController(title: "Ops! Algo deu errado", message: apiError.message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.interactor.getResults()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     func startLoading() {

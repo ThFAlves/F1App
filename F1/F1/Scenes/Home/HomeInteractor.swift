@@ -28,7 +28,7 @@ extension HomeInteractor: HomeInteracting {
                 self?.races = races
                 self?.presenter.presentRaces(races: races)
             case let .failure(error):
-                break
+                self?.presenter.presentError(apiError: error)
             }
         }
     }

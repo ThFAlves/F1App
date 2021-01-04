@@ -28,4 +28,13 @@ public enum ApiError: Error {
             return nil
         }
     }
+    
+    var message: String {
+        switch self {
+        case .timeout, .connectionFailure:
+            return "Você está sem internet"
+        default:
+            return "Tente novamente mais tarde"
+        }
+    }
 }

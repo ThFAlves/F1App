@@ -27,14 +27,14 @@ extension RaceDetailInteractor: RaceDetailInteracting {
             switch result {
             case let .success(model):
                 guard let race = model.data.raceTable.races.first else {
-                    //todo: error
+                    self?.presenter.presentError(apiError: .otherErrors)
                     return
                 }
                 self?.drivers = race.results
                 self?.presenter.presentTitle(race.raceName)
                 self?.presenter.presentDrivers(drivers: race.results)
             case let .failure(apiError):
-                print(apiError)
+                self?.presenter.presentError(apiError: apiError)
             }
         }
     }
