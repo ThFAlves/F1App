@@ -101,6 +101,7 @@ extension HomeViewController: HomeDisplaying {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         interactor.didSelectItem(row: indexPath.row)

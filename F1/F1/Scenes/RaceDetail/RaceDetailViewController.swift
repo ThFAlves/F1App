@@ -129,5 +129,7 @@ extension RaceDetailViewController: RaceDetailDisplaying {
 
 // MARK: - UICollectionViewDelegate
 extension RaceDetailViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        interactor.didSelectItem(row: indexPath.row)
+    }
 }

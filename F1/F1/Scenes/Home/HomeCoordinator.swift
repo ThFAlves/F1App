@@ -11,9 +11,6 @@ protocol HomeCoordinating: AnyObject {
 
 final class HomeCoordinator {
     weak var viewController: UIViewController?
-
-    init() {
-    }
 }
 
 // MARK: - HomeCoordinating

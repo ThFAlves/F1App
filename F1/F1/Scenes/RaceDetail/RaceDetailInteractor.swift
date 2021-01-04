@@ -2,6 +2,7 @@ import Foundation
 
 protocol RaceDetailInteracting: AnyObject {
     func getResults()
+    func didSelectItem(row: Int)
 }
 
 final class RaceDetailInteractor {
@@ -37,5 +38,12 @@ extension RaceDetailInteractor: RaceDetailInteracting {
                 self?.presenter.presentError(apiError: apiError)
             }
         }
+    }
+    
+    func didSelectItem(row: Int) {
+        guard drivers.indices.contains(row), let url = URL(string: drivers[row].driver.url) else {
+            return
+        }
+        presenter.didNextStep(action: .open(url: url))
     }
 }
