@@ -47,6 +47,7 @@
 		D862D77325A2246B001F0DDE /* DriverData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D77225A2246B001F0DDE /* DriverData.swift */; };
 		D862D78525A2809A001F0DDE /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D78425A2809A001F0DDE /* Color.swift */; };
 		D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */; };
+		D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		D862D78425A2809A001F0DDE /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "F1Tests-Bridging-Header.h"; sourceTree = "<group>"; };
 		D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
+		D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -365,6 +367,7 @@
 			children = (
 				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
 				D862D79F25A2B2E1001F0DDE /* F1Tests-Bridging-Header.h */,
+				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */,
+				D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

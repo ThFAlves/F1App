@@ -68,17 +68,6 @@ final class HomeInteractorTests: XCTestCase {
         XCTAssertEqual(presenterSpy.action, [])
         XCTAssertNotNil(presenterSpy.apiError)
     }
-    
-    func testLoadCurrentSeason_WhenResultIsError_ShouldPresentError() {
-        let seasonData = SeasonData(
-        serviceSpy.result = .success(<#T##SeasonData#>)
-        sut.loadCurrentSeason()
-        XCTAssertEqual(presenterSpy.callPresentStartLoadingCount, 1)
-        XCTAssertEqual(presenterSpy.callPresentStopLoadingCount, 1)
-        XCTAssertEqual(presenterSpy.callPresentErrorCount, 1)
-        XCTAssertEqual(presenterSpy.action, [])
-        XCTAssertNotNil(presenterSpy.apiError)
-    }
 }
 
 extension HomeAction: Equatable {
