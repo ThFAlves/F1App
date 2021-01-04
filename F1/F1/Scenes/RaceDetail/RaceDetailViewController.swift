@@ -2,6 +2,10 @@ import UIKit
 
 protocol RaceDetailDisplaying: AnyObject {
     func displayDriverResult(driver: [DriverResult])
+    func displayTitle(_ titleScreen: String)
+    func displayError(apiError: ApiError)
+    func startLoading()
+    func stopLoading()
 }
 
 private extension RaceDetailViewController.Layout {
@@ -19,11 +23,25 @@ private extension RaceDetailViewController.Layout {
 final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIView> {
     fileprivate enum Layout { }
 
+    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
+    private lazy var infoView = UIView()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Results"
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = Colors.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = .init(width: Layout.Size.screenWidth, height: Layout.Size.itemHeight)
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 12
+        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
@@ -49,17 +67,29 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
     }
 
     override func buildViewHierarchy() {
+        infoView.addSubview(descriptionLabel)
+        view.addSubview(infoView)
         view.addSubview(collectionView)
     }
     
     override func setupConstraints() {
+        descriptionLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
+        }
+        infoView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(64)
+        }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(infoView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
     override func configureViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.base
+        activityIndicator.color = Colors.white
+        infoView.backgroundColor = Colors.secondaryBase
     }
 }
 
@@ -68,6 +98,32 @@ extension RaceDetailViewController: RaceDetailDisplaying {
     func displayDriverResult(driver: [DriverResult]) {
         collectionView.dataSource = collectionViewDataSource
         collectionViewDataSource.add(items: driver, to: .main)
+    }
+    
+    func displayTitle(_ titleScreen: String) {
+        title = titleScreen
+    }
+    
+    func displayError(apiError: ApiError) {
+        let alert = UIAlertController(title: "Ops! Algo deu errado", message: apiError.message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.interactor.getResults()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+    func startLoading() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+    }
+
+    func stopLoading() {
+        activityIndicator.removeFromSuperview()
     }
 }
 

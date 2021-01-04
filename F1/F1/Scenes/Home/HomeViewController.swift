@@ -3,12 +3,15 @@ import UIKit
 
 protocol HomeDisplaying: AnyObject {
     func displayRaceList(races: [Race])
+    func displayError(apiError: ApiError)
+    func startLoading()
+    func stopLoading()
 }
 
 private extension HomeViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
-        static let itemHeight: CGFloat = 280
+        static let itemHeight: CGFloat = 140
         static let offset: CGFloat = 20
     }
     
@@ -20,11 +23,13 @@ private extension HomeViewController.Layout {
 final class HomeViewController: ViewController<HomeInteracting, UIView> {
     fileprivate enum Layout { }
 
+    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
-        flowLayout.itemSize = .init(width: Layout.Size.screenWidth, height: Layout.Size.itemHeight)
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.itemSize = .init(width: Layout.Size.screenWidth - 32, height: Layout.Size.itemHeight)
+        flowLayout.minimumLineSpacing = 12
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
@@ -47,7 +52,6 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.loadCurrentSeason()
-        
     }
 
     override func buildViewHierarchy() {
@@ -61,8 +65,9 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     }
 
     override func configureViews() {
-        view.backgroundColor = .white
-        
+        title = "F1 Challenge"
+        view.backgroundColor = Colors.base
+        activityIndicator.color = Colors.white
     }
 }
 
@@ -71,6 +76,28 @@ extension HomeViewController: HomeDisplaying {
     func displayRaceList(races: [Race]) {
         collectionView.dataSource = collectionViewDataSource
         collectionViewDataSource.add(items: races, to: .main)
+    }
+    
+    func displayError(apiError: ApiError) {
+        let alert = UIAlertController(title: "Ops! Algo deu errado", message: apiError.message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Tentar novamente", style: .default) { action in
+            self.interactor.loadCurrentSeason()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+    func startLoading() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+    }
+
+    func stopLoading() {
+        activityIndicator.removeFromSuperview()
     }
 }
 

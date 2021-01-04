@@ -9,6 +9,7 @@ final class RaceDetailInteractor {
     private let presenter: RaceDetailPresenting
     
     private let round: String
+    private var drivers: [DriverResult] = []
 
     init(round: String, service: RaceDetailServicing, presenter: RaceDetailPresenting) {
         self.service = service
@@ -20,13 +21,20 @@ final class RaceDetailInteractor {
 // MARK: - RaceDetailInteracting
 extension RaceDetailInteractor: RaceDetailInteracting {
     func getResults() {
+        presenter.presentStartLoading()
         service.getResult(round: round) { [weak self] result in
+            self?.presenter.presentStopLoading()
             switch result {
             case let .success(model):
-                let drivers = model.data.raceTable.races.first?.results ?? []
-                self?.presenter.presentDrivers(drivers: drivers)
+                guard let race = model.data.raceTable.races.first else {
+                    self?.presenter.presentError(apiError: .otherErrors)
+                    return
+                }
+                self?.drivers = race.results
+                self?.presenter.presentTitle(race.raceName)
+                self?.presenter.presentDrivers(drivers: race.results)
             case let .failure(apiError):
-                print(apiError)
+                self?.presenter.presentError(apiError: apiError)
             }
         }
     }

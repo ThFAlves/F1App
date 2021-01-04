@@ -4,6 +4,10 @@ protocol RaceDetailPresenting: AnyObject {
     var viewController: RaceDetailDisplaying? { get set }
     func didNextStep(action: RaceDetailAction)
     func presentDrivers(drivers: [DriverResult])
+    func presentTitle(_ title: String)
+    func presentError(apiError: ApiError)
+    func presentStartLoading()
+    func presentStopLoading()
 }
 
 final class RaceDetailPresenter {
@@ -23,5 +27,21 @@ extension RaceDetailPresenter: RaceDetailPresenting {
     
     func presentDrivers(drivers: [DriverResult]) {
         viewController?.displayDriverResult(driver: drivers)
+    }
+    
+    func presentTitle(_ title: String) {
+        viewController?.displayTitle(title)
+    }
+    
+    func presentError(apiError: ApiError) {
+        viewController?.displayError(apiError: apiError)
+    }
+    
+    func presentStartLoading() {
+        viewController?.startLoading()
+    }
+    
+    func presentStopLoading() {
+        viewController?.stopLoading()
     }
 }

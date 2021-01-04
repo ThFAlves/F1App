@@ -32,4 +32,29 @@ struct Race: Decodable, RaceListDisplay {
     let season: String
     let round: String
     let raceName: String
+    let circuit: Circuit
+    
+    enum CodingKeys: String, CodingKey {
+        case season
+        case round
+        case raceName
+        case circuit = "Circuit"
+    }
+}
+
+struct Circuit: Decodable {
+    let name: String
+    let location: RaceLocation
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "circuitName"
+        case location = "Location"
+    }
+}
+
+struct RaceLocation: Decodable {
+    let lat: String
+    let long: String
+    let locality: String
+    let country: String
 }
