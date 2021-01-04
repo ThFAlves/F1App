@@ -10,6 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: Colors.red]
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().barStyle = .black
         
         return true
     }

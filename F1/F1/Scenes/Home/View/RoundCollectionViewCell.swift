@@ -3,17 +3,24 @@ import UIKit
 final class RoundCollectionViewCell: UICollectionViewCell {
     static let identifier = "RoundCollectionViewCell"
     
+    private lazy var backgroundImage: UIImageView = {
+        let image = UIImage(named: "raceFlag")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private lazy var localityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .white
+        label.textColor = Colors.secondary
         return label
     }()
     
     private lazy var locationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = .white
+        label.textColor = Colors.secondary
         return label
     }()
     
@@ -29,14 +36,14 @@ final class RoundCollectionViewCell: UICollectionViewCell {
     private lazy var raceNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.textColor = .white
+        label.textColor = Colors.white
         return label
     }()
     
     private lazy var circuitNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .white
+        label.textColor = Colors.secondary
         return label
     }()
     
@@ -67,16 +74,21 @@ final class RoundCollectionViewCell: UICollectionViewCell {
         raceNameLabel.text = race.raceName
         circuitNameLabel.text = race.circuit.name
         localityLabel.text = "\(race.circuit.location.locality) \(race.circuit.location.country)"
-        locationLabel.text = "Lat:\(race.circuit.location.lat) Lon:\(race.circuit.location.long)"
+        locationLabel.text = "Lat: \(race.circuit.location.lat) Lon: \(race.circuit.location.long)"
     }
 }
 
 extension RoundCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
+        addSubview(backgroundImage)
         addSubview(stack)
     }
     
     func setupConstraints() {
+        backgroundImage.snp.makeConstraints {
+            $0.bottom.top.trailing.equalToSuperview()
+            $0.width.equalTo(backgroundImage.snp.height).multipliedBy(1.8)
+        }
         stack.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }

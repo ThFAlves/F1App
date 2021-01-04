@@ -21,17 +21,24 @@ final class DriverCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    private lazy var backgroundImage: UIImageView = {
+        let image = UIImage(named: "driverBackground")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private lazy var constructorNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = Colors.white
+        label.textColor = Colors.secondary
         return label
     }()
     
     private lazy var constructorNationalityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Colors.white
+        label.textColor = Colors.secondary
         return label
     }()
     
@@ -53,8 +60,8 @@ final class DriverCollectionViewCell: UICollectionViewCell {
     
     private lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = Colors.white
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = Colors.secondary
         return label
     }()
     
@@ -93,6 +100,7 @@ final class DriverCollectionViewCell: UICollectionViewCell {
 // MARK: - ViewConfiguration
 extension DriverCollectionViewCell: ViewConfiguration {
     func buildViewHierarchy() {
+        infoView.addSubview(backgroundImage)
         infoView.addSubview(stack)
         addSubview(positionLabel)
         addSubview(infoView)
@@ -105,6 +113,10 @@ extension DriverCollectionViewCell: ViewConfiguration {
         }
         stack.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
+        }
+        backgroundImage.snp.makeConstraints {
+            $0.bottom.top.trailing.equalToSuperview()
+            $0.width.equalTo(backgroundImage.snp.height).multipliedBy(1.8)
         }
         infoView.snp.makeConstraints {
             $0.leading.equalTo(positionLabel.snp.trailing)

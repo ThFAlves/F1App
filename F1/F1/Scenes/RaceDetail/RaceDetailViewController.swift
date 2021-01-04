@@ -25,11 +25,23 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
 
     private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
+    private lazy var infoView = UIView()
+    
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Results"
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = Colors.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.itemSize = .init(width: Layout.Size.screenWidth, height: Layout.Size.itemHeight)
         flowLayout.minimumLineSpacing = 12
+        flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
@@ -55,18 +67,29 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
     }
 
     override func buildViewHierarchy() {
+        infoView.addSubview(descriptionLabel)
+        view.addSubview(infoView)
         view.addSubview(collectionView)
     }
     
     override func setupConstraints() {
+        descriptionLabel.snp.makeConstraints {
+            $0.edges.equalToSuperview().inset(16)
+        }
+        infoView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(64)
+        }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(infoView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
     override func configureViews() {
         view.backgroundColor = Colors.base
         activityIndicator.color = Colors.white
+        infoView.backgroundColor = Colors.secondaryBase
     }
 }
 
