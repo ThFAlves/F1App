@@ -3,6 +3,8 @@ import UIKit
 
 protocol HomeDisplaying: AnyObject {
     func displayRaceList(races: [Race])
+    func startLoading()
+    func stopLoading()
 }
 
 private extension HomeViewController.Layout {
@@ -20,6 +22,8 @@ private extension HomeViewController.Layout {
 final class HomeViewController: ViewController<HomeInteracting, UIView> {
     fileprivate enum Layout { }
 
+    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -62,6 +66,7 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     override func configureViews() {
         title = "F1 Challenge"
         view.backgroundColor = Colors.base
+        activityIndicator.color = Colors.white
     }
 }
 
@@ -70,6 +75,18 @@ extension HomeViewController: HomeDisplaying {
     func displayRaceList(races: [Race]) {
         collectionView.dataSource = collectionViewDataSource
         collectionViewDataSource.add(items: races, to: .main)
+    }
+    
+    func startLoading() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+    }
+
+    func stopLoading() {
+        activityIndicator.removeFromSuperview()
     }
 }
 

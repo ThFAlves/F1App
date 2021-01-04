@@ -3,6 +3,8 @@ import UIKit
 protocol RaceDetailDisplaying: AnyObject {
     func displayDriverResult(driver: [DriverResult])
     func displayTitle(_ titleScreen: String)
+    func startLoading()
+    func stopLoading()
 }
 
 private extension RaceDetailViewController.Layout {
@@ -20,6 +22,8 @@ private extension RaceDetailViewController.Layout {
 final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIView> {
     fileprivate enum Layout { }
 
+    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -61,6 +65,7 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
 
     override func configureViews() {
         view.backgroundColor = Colors.base
+        activityIndicator.color = Colors.white
     }
 }
 
@@ -73,6 +78,18 @@ extension RaceDetailViewController: RaceDetailDisplaying {
     
     func displayTitle(_ titleScreen: String) {
         title = titleScreen
+    }
+    
+    func startLoading() {
+        view.addSubview(activityIndicator)
+        activityIndicator.snp.makeConstraints {
+            $0.centerY.centerX.equalToSuperview()
+        }
+        activityIndicator.startAnimating()
+    }
+
+    func stopLoading() {
+        activityIndicator.removeFromSuperview()
     }
 }
 

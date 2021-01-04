@@ -19,7 +19,9 @@ final class HomeInteractor {
 // MARK: - HomeInteracting
 extension HomeInteractor: HomeInteracting {
     func loadCurrentSeason() {
+        presenter.presentStartLoading()
         service.getCurrentSeason { [weak self] result in
+            self?.presenter.presentStopLoading()
             switch result {
             case let .success(seasonList):
                 let races = seasonList.data.raceTable.races

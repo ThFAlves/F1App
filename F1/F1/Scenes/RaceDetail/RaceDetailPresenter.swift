@@ -5,6 +5,8 @@ protocol RaceDetailPresenting: AnyObject {
     func didNextStep(action: RaceDetailAction)
     func presentDrivers(drivers: [DriverResult])
     func presentTitle(_ title: String)
+    func presentStartLoading()
+    func presentStopLoading()
 }
 
 final class RaceDetailPresenter {
@@ -28,5 +30,13 @@ extension RaceDetailPresenter: RaceDetailPresenting {
     
     func presentTitle(_ title: String) {
         viewController?.displayTitle(title)
+    }
+    
+    func presentStartLoading() {
+        viewController?.startLoading()
+    }
+    
+    func presentStopLoading() {
+        viewController?.stopLoading()
     }
 }

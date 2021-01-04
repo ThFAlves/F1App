@@ -21,7 +21,9 @@ final class RaceDetailInteractor {
 // MARK: - RaceDetailInteracting
 extension RaceDetailInteractor: RaceDetailInteracting {
     func getResults() {
+        presenter.presentStartLoading()
         service.getResult(round: round) { [weak self] result in
+            self?.presenter.presentStopLoading()
             switch result {
             case let .success(model):
                 guard let race = model.data.raceTable.races.first else {
