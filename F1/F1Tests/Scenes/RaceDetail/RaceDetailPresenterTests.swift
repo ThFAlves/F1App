@@ -75,7 +75,7 @@ final class RaceDetailPresenterTests: XCTestCase {
         XCTAssertEqual(coordinatorSpy.action, [.open(url: url)])
     }
     
-    func testPresentError_WhenBadReqeuest_ShouldReveiveErrorAlert() {
+    func testPresentError_WhenBadReqeuest_ShouldReceiveErrorAlert() {
         sut.presentError(apiError: .badRequest)
         XCTAssertEqual(viewControllerSpy.callDisplayErrorCount, 1)
         XCTAssertNotNil(viewControllerSpy.apiError)

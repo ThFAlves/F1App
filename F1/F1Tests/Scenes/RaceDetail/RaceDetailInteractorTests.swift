@@ -115,6 +115,10 @@ extension RaceDetailAction: Equatable {
         switch (lhs, rhs) {
         case let (.open(url: lhsUrl), .open(rhsUrl)):
             return lhsUrl == rhsUrl
+        case let (.pitStops(lhsRound), .pitStops(rhsRound)):
+            return lhsRound == rhsRound
+        default:
+            return false
         }
     }
 }

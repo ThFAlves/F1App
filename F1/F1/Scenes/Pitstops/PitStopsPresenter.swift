@@ -12,14 +12,6 @@ protocol InteractorToPresenterPitStopsProtocol: AnyObject {
     func presentStopLoading()
 }
 
-//
-
-
-
-
-protocol PresenterToRouterPitStopsProtocol: AnyObject {
-}
-
 final class PitStopsPresenter {
     private let interactor: PresenterToInteractorPitStopsProtocol
     private let router: PresenterToRouterPitStopsProtocol

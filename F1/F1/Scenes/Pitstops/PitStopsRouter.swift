@@ -1,5 +1,7 @@
 import UIKit
 
+protocol PresenterToRouterPitStopsProtocol: AnyObject { }
+
 final class PitStopsRouter: PresenterToRouterPitStopsProtocol {
     static func createScene(with round: String) -> UIViewController {
 

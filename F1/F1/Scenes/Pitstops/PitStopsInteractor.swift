@@ -21,9 +21,9 @@ extension PitStopsInteractor: PresenterToInteractorPitStopsProtocol {
     func getPitStops() {
         presenter?.presentStartLoading()
         service.getPitStops(round: "3") { [weak self] result in
+            self?.presenter?.presentStopLoading()
             switch result {
             case let .success(model):
-                self?.presenter?.presentStopLoading()
                 guard let race = model.data.raceTable.races.first else {
                     self?.presenter?.presentError(apiError: .otherErrors)
                     return
