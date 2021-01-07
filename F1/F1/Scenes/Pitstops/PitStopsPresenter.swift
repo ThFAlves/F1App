@@ -2,14 +2,20 @@ import Foundation
 
 protocol ViewToPresenterPitStopsProtocol: AnyObject {
     var viewController: PresenterToViewPitStopsProtocol? { get set }
-    func didLoad()
+    func getPitStops()
+}
+
+protocol InteractorToPresenterPitStopsProtocol: AnyObject {
+    func presentError(apiError: ApiError)
+    func presentStartLoading()
+    func presentStopLoading()
 }
 
 //
 
 
 protocol PresenterToInteractorPitStopsProtocol: AnyObject {
-    
+    func getPitStops()
 }
 
 protocol PresenterToRouterPitStopsProtocol: AnyObject {
@@ -28,11 +34,22 @@ final class PitStopsPresenter {
 
 // MARK: - InteractorToPresenterPitStopsProtocol
 extension PitStopsPresenter: InteractorToPresenterPitStopsProtocol {
+    func presentError(apiError: ApiError) {
+        viewController?.displayError(apiError: apiError)
+    }
+
+    func presentStartLoading() {
+        viewController?.startLoading()
+    }
+
+    func presentStopLoading() {
+        viewController?.stopLoading()
+    }
 }
 
 // MARK: - ViewToPresenterPitStopsProtocol
 extension PitStopsPresenter: ViewToPresenterPitStopsProtocol {
-    func didLoad() {
-        // ate ate ta certo
+    func getPitStops() {
+        interactor.getPitStops()
     }
 }
