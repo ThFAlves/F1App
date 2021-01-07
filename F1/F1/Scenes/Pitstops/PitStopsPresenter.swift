@@ -3,13 +3,14 @@ import Foundation
 protocol ViewToPresenterPitStopsProtocol: AnyObject {
     var viewController: PresenterToViewPitStopsProtocol? { get set }
     func getPitStops()
+    func hasMoreItens(_ indexPath: IndexPath)
 }
 
 protocol InteractorToPresenterPitStopsProtocol: AnyObject {
     func displayPitStopsList(list: [PitStopsResults])
     func presentError(apiError: ApiError)
-    func presentStartLoading()
-    func presentStopLoading()
+    func presentStartLoading(hasContent: Bool)
+    func presentStopLoading(hasContent: Bool)
 }
 
 final class PitStopsPresenter {
@@ -33,18 +34,22 @@ extension PitStopsPresenter: InteractorToPresenterPitStopsProtocol {
         viewController?.displayError(apiError: apiError)
     }
 
-    func presentStartLoading() {
-        viewController?.startLoading()
+    func presentStartLoading(hasContent: Bool) {
+        viewController?.startLoading(hasContent: hasContent)
     }
 
-    func presentStopLoading() {
-        viewController?.stopLoading()
+    func presentStopLoading(hasContent: Bool) {
+        viewController?.stopLoading(hasContent: hasContent)
     }
 }
 
 // MARK: - ViewToPresenterPitStopsProtocol
 extension PitStopsPresenter: ViewToPresenterPitStopsProtocol {
     func getPitStops() {
-        interactor.getPitStops()
+        interactor.getPitStops(offSet: 0)
+    }
+    
+    func hasMoreItens(_ indexPath: IndexPath) {
+        interactor.fetchMoreItensIfNeeded(indexPath)
     }
 }

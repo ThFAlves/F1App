@@ -65,6 +65,7 @@
 		D8A495D725A7321700ACD473 /* PitStopsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495D625A7321700ACD473 /* PitStopsPresenterTests.swift */; };
 		D8A495E325A7384000ACD473 /* mockPitStops.json in Resources */ = {isa = PBXBuildFile; fileRef = D8A495E225A7384000ACD473 /* mockPitStops.json */; };
 		D8A495EE25A73B1200ACD473 /* PitStopsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495ED25A73B1200ACD473 /* PitStopsInteractorTests.swift */; };
+		D8A4960725A7C9F500ACD473 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4960625A7C9F500ACD473 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +156,7 @@
 		D8A495D625A7321700ACD473 /* PitStopsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsPresenterTests.swift; sourceTree = "<group>"; };
 		D8A495E225A7384000ACD473 /* mockPitStops.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockPitStops.json; sourceTree = "<group>"; };
 		D8A495ED25A73B1200ACD473 /* PitStopsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsInteractorTests.swift; sourceTree = "<group>"; };
+		D8A4960625A7C9F500ACD473 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -453,8 +455,8 @@
 				D8A495C325A6AB1500ACD473 /* Model */,
 				D8A495BA25A6A83900ACD473 /* Service */,
 				D8A4956525A6931E00ACD473 /* PitStopsViewController.swift */,
-				D8A4956325A6931E00ACD473 /* PitStopsRouter.swift */,
 				D8A4956425A6931E00ACD473 /* PitStopsPresenter.swift */,
+				D8A4956325A6931E00ACD473 /* PitStopsRouter.swift */,
 				D8A4956625A6931E00ACD473 /* PitStopsInteractor.swift */,
 				D8A4956725A6931E00ACD473 /* PitStopsService.swift */,
 			);
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				D8A495C425A6AB2400ACD473 /* PitStopsData.swift */,
+				D8A4960625A7C9F500ACD473 /* Page.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				D862D6F625A112F1001F0DDE /* Api.swift in Sources */,
 				D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */,
 				D8A4956D25A6931E00ACD473 /* PitStopsService.swift in Sources */,
+				D8A4960725A7C9F500ACD473 /* Page.swift in Sources */,
 				D862D6F125A11203001F0DDE /* ApiEndpoint.swift in Sources */,
 				D862D6FB25A114E6001F0DDE /* Environment.swift in Sources */,
 			);

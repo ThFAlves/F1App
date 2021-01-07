@@ -3,19 +3,23 @@ import Foundation
 protocol PitStopsDataListDisplay {}
 
 struct PitStopsData: Decodable {
-    let data: PMRDriverData
+    let data: PMPitStopsData
     
     enum CodingKeys: String, CodingKey {
         case data = "MRData"
     }
 }
 
-struct PMRDriverData: Decodable {
+struct PMPitStopsData: Decodable {
+    let limit: String
+    let offset: String
     let total: String
     let raceTable: RacePitStopsTable
     
     enum CodingKeys: String, CodingKey {
         case total
+        case limit
+        case offset
         case raceTable = "RaceTable"
     }
 }

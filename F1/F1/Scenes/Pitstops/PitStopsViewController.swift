@@ -3,8 +3,8 @@ import UIKit
 protocol PresenterToViewPitStopsProtocol: AnyObject {
     func displayPitStopsList(list: [PitStopsResults])
     func displayError(apiError: ApiError)
-    func startLoading()
-    func stopLoading()
+    func startLoading(hasContent: Bool)
+    func stopLoading(hasContent: Bool)
 }
 
 private extension PitStopsViewController.Layout {
@@ -31,7 +31,6 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
         let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
-        collection.delegate = self
         collection.register(PitStopsCollectionViewCell.self, forCellWithReuseIdentifier: PitStopsCollectionViewCell.identifier)
         return collection
     }()
@@ -41,6 +40,7 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
         dataSource.itemProvider = { view, indexPath, item -> UICollectionViewCell? in
             let cell = view.dequeueReusableCell(withReuseIdentifier: PitStopsCollectionViewCell.identifier, for: indexPath) as? PitStopsCollectionViewCell
             cell?.setup(info: item)
+            self.presenter.hasMoreItens(indexPath)
             return cell
         }
         dataSource.add(section: .main)
@@ -69,10 +69,6 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
     }
 }
 
-// MARK: - UICollectionViewDelegate
-extension PitStopsViewController: UICollectionViewDelegate {
-}
-
 // MARK: - PresenterToViewPitStopsProtocol
 extension PitStopsViewController: PresenterToViewPitStopsProtocol {
     func displayPitStopsList(list: [PitStopsResults]) {
@@ -90,7 +86,8 @@ extension PitStopsViewController: PresenterToViewPitStopsProtocol {
         present(alert, animated: true)
     }
     
-    func startLoading() {
+    func startLoading(hasContent: Bool) {
+        guard !hasContent else { return }
         view.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints {
             $0.centerY.centerX.equalToSuperview()
@@ -98,7 +95,8 @@ extension PitStopsViewController: PresenterToViewPitStopsProtocol {
         activityIndicator.startAnimating()
     }
 
-    func stopLoading() {
+    func stopLoading(hasContent: Bool) {
+        guard hasContent else { return }
         activityIndicator.removeFromSuperview()
     }
 }
