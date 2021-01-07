@@ -1,11 +1,18 @@
 import Foundation
 
+protocol PresenterToInteractorPitStopsProtocol: AnyObject {
+    func getPitStops()
+}
+
 final class PitStopsInteractor {
     private let service: PitStopsServicing
+    private let round: String
+    
     weak var presenter: InteractorToPresenterPitStopsProtocol?
 
-    init(service: PitStopsServicing) {
+    init(service: PitStopsServicing, round: String) {
         self.service = service
+        self.round = round
     }
 }
 
@@ -16,17 +23,14 @@ extension PitStopsInteractor: PresenterToInteractorPitStopsProtocol {
         service.getPitStops(round: "3") { [weak self] result in
             switch result {
             case let .success(model):
-                print(model)
-//                guard let race = model.data.raceTable.races.first else {
-//                    self?.presenter.presentError(apiError: .otherErrors)
-//                    return
-//                }
-//                self?.drivers = race.results
-//                self?.presenter.presentTitle(race.raceName)
-//                self?.presenter.presentDrivers(drivers: race.results)
+                self?.presenter?.presentStopLoading()
+                guard let race = model.data.raceTable.races.first else {
+                    self?.presenter?.presentError(apiError: .otherErrors)
+                    return
+                }
+                self?.presenter?.displayPitStopsList(list: race.pitStopsResult)
             case let .failure(apiError):
-//                self?.presenter.presentError(apiError: apiError)
-            print(apiError)
+                self?.presenter?.presentError(apiError: apiError)
             }
         }
     }

@@ -6,6 +6,7 @@ protocol ViewToPresenterPitStopsProtocol: AnyObject {
 }
 
 protocol InteractorToPresenterPitStopsProtocol: AnyObject {
+    func displayPitStopsList(list: [PitStopsResults])
     func presentError(apiError: ApiError)
     func presentStartLoading()
     func presentStopLoading()
@@ -14,9 +15,7 @@ protocol InteractorToPresenterPitStopsProtocol: AnyObject {
 //
 
 
-protocol PresenterToInteractorPitStopsProtocol: AnyObject {
-    func getPitStops()
-}
+
 
 protocol PresenterToRouterPitStopsProtocol: AnyObject {
 }
@@ -34,6 +33,10 @@ final class PitStopsPresenter {
 
 // MARK: - InteractorToPresenterPitStopsProtocol
 extension PitStopsPresenter: InteractorToPresenterPitStopsProtocol {
+    func displayPitStopsList(list: [PitStopsResults]) {
+        viewController?.displayPitStopsList(list: list)
+    }
+    
     func presentError(apiError: ApiError) {
         viewController?.displayError(apiError: apiError)
     }

@@ -12,7 +12,6 @@ private extension HomeViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
         static let itemHeight: CGFloat = 140
-        static let offset: CGFloat = 20
     }
     
     enum Section {
