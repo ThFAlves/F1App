@@ -1,17 +1,16 @@
-import SnapKit
 import UIKit
 
-protocol HomeDisplaying: AnyObject {
-    func displayRaceList(races: [Race])
+protocol PresenterToViewPitStopsProtocol: AnyObject {
+    func displayPitStopsList(list: [PitStopsResults])
     func displayError(apiError: ApiError)
     func startLoading()
     func stopLoading()
 }
 
-private extension HomeViewController.Layout {
+private extension PitStopsViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
-        static let itemHeight: CGFloat = 140
+        static let itemHeight: CGFloat = 100
     }
     
     enum Section {
@@ -19,11 +18,11 @@ private extension HomeViewController.Layout {
     }
 }
 
-final class HomeViewController: ViewController<HomeInteracting, UIView> {
+final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsProtocol, UIView> {
     fileprivate enum Layout { }
-
-    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
     
+    private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -33,14 +32,14 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
         collection.delegate = self
-        collection.register(RoundCollectionViewCell.self, forCellWithReuseIdentifier: RoundCollectionViewCell.identifier)
+        collection.register(PitStopsCollectionViewCell.self, forCellWithReuseIdentifier: PitStopsCollectionViewCell.identifier)
         return collection
     }()
     
-    private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, RaceListDisplay> = {
-        let dataSource = CollectionViewDataSource<Layout.Section, RaceListDisplay>(view: collectionView)
+    private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, DriverResultListDisplay> = {
+        let dataSource = CollectionViewDataSource<Layout.Section, DriverResultListDisplay>(view: collectionView)
         dataSource.itemProvider = { view, indexPath, item -> UICollectionViewCell? in
-            let cell = view.dequeueReusableCell(withReuseIdentifier: RoundCollectionViewCell.identifier, for: indexPath) as? RoundCollectionViewCell
+            let cell = view.dequeueReusableCell(withReuseIdentifier: PitStopsCollectionViewCell.identifier, for: indexPath) as? PitStopsCollectionViewCell
             cell?.setup(info: item)
             return cell
         }
@@ -50,7 +49,7 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor.loadCurrentSeason()
+        presenter.getPitStops()
     }
 
     override func buildViewHierarchy() {
@@ -64,24 +63,28 @@ final class HomeViewController: ViewController<HomeInteracting, UIView> {
     }
 
     override func configureViews() {
-        title = "F1 Challenge"
+        title = "Pit Stops"
         view.backgroundColor = Colors.base
         activityIndicator.color = Colors.white
     }
 }
 
-// MARK: - HomeDisplaying
-extension HomeViewController: HomeDisplaying {
-    func displayRaceList(races: [Race]) {
+// MARK: - UICollectionViewDelegate
+extension PitStopsViewController: UICollectionViewDelegate {
+}
+
+// MARK: - PresenterToViewPitStopsProtocol
+extension PitStopsViewController: PresenterToViewPitStopsProtocol {
+    func displayPitStopsList(list: [PitStopsResults]) {
         collectionView.dataSource = collectionViewDataSource
-        collectionViewDataSource.add(items: races, to: .main)
+        collectionViewDataSource.add(items: list, to: .main)
     }
     
     func displayError(apiError: ApiError) {
         let alert = UIAlertController(title: "Ops! Algo deu errado", message: apiError.message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Tentar novamente", style: .default) { action in
-            self.interactor.loadCurrentSeason()
+            self.presenter.getPitStops()
         }
         alert.addAction(action)
         present(alert, animated: true)
@@ -97,12 +100,5 @@ extension HomeViewController: HomeDisplaying {
 
     func stopLoading() {
         activityIndicator.removeFromSuperview()
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-extension HomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        interactor.didSelectItem(row: indexPath.row)
     }
 }

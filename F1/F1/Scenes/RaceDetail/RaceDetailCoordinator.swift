@@ -3,6 +3,7 @@ import SafariServices
 
 enum RaceDetailAction {
     case open(url: URL)
+    case pitStops(round: String)
 }
 
 protocol RaceDetailCoordinating: AnyObject {
@@ -17,9 +18,13 @@ final class RaceDetailCoordinator {
 // MARK: - RaceDetailCoordinating
 extension RaceDetailCoordinator: RaceDetailCoordinating {
     func perform(action: RaceDetailAction) {
-        if case let .open(url: url) = action {
-            let safariViewController = SFSafariViewController(url: url)
-            viewController?.navigationController?.present(safariViewController, animated: true)
+        let view: UIViewController
+        switch action {
+        case let .open(url):
+            view = SFSafariViewController(url: url)
+        case let .pitStops(round):
+            view = PitStopsRouter.createScene(with: round)
         }
+        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }
