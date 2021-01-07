@@ -10,7 +10,7 @@ protocol PresenterToViewPitStopsProtocol: AnyObject {
 private extension PitStopsViewController.Layout {
     enum Size {
         static let screenWidth = UIScreen.main.bounds.width
-        static let itemHeight: CGFloat = 120
+        static let itemHeight: CGFloat = 100
     }
     
     enum Section {
@@ -32,15 +32,15 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
         collection.showsHorizontalScrollIndicator = false
         collection.backgroundColor = .clear
         collection.delegate = self
-        collection.register(RoundCollectionViewCell.self, forCellWithReuseIdentifier: RoundCollectionViewCell.identifier)
+        collection.register(PitStopsCollectionViewCell.self, forCellWithReuseIdentifier: PitStopsCollectionViewCell.identifier)
         return collection
     }()
     
     private lazy var collectionViewDataSource: CollectionViewDataSource<Layout.Section, DriverResultListDisplay> = {
         let dataSource = CollectionViewDataSource<Layout.Section, DriverResultListDisplay>(view: collectionView)
         dataSource.itemProvider = { view, indexPath, item -> UICollectionViewCell? in
-            let cell = view.dequeueReusableCell(withReuseIdentifier: RoundCollectionViewCell.identifier, for: indexPath) as? RoundCollectionViewCell
-//            cell?.setup(info: item)
+            let cell = view.dequeueReusableCell(withReuseIdentifier: PitStopsCollectionViewCell.identifier, for: indexPath) as? PitStopsCollectionViewCell
+            cell?.setup(info: item)
             return cell
         }
         dataSource.add(section: .main)

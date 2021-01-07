@@ -61,6 +61,7 @@
 		D8A495A425A6946200ACD473 /* ViperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495A325A6946200ACD473 /* ViperViewController.swift */; };
 		D8A495BC25A6A84E00ACD473 /* PitStopsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495BB25A6A84E00ACD473 /* PitStopsEndpoint.swift */; };
 		D8A495C525A6AB2400ACD473 /* PitStopsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495C425A6AB2400ACD473 /* PitStopsData.swift */; };
+		D8A495CE25A727A100ACD473 /* PitStopsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495CD25A727A100ACD473 /* PitStopsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		D8A495A325A6946200ACD473 /* ViperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViperViewController.swift; sourceTree = "<group>"; };
 		D8A495BB25A6A84E00ACD473 /* PitStopsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsEndpoint.swift; sourceTree = "<group>"; };
 		D8A495C425A6AB2400ACD473 /* PitStopsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsData.swift; sourceTree = "<group>"; };
+		D8A495CD25A727A100ACD473 /* PitStopsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsCollectionViewCell.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -440,6 +442,7 @@
 		D8A4956125A692F100ACD473 /* Pitstops */ = {
 			isa = PBXGroup;
 			children = (
+				D8A495CC25A7278000ACD473 /* View */,
 				D8A495C325A6AB1500ACD473 /* Model */,
 				D8A495BA25A6A83900ACD473 /* Service */,
 				D8A4956525A6931E00ACD473 /* PitStopsViewController.swift */,
@@ -465,6 +468,14 @@
 				D8A495C425A6AB2400ACD473 /* PitStopsData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D8A495CC25A7278000ACD473 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8A495CD25A727A100ACD473 /* PitStopsCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -731,6 +742,7 @@
 				D862D6BA25A10E8F001F0DDE /* HomeService.swift in Sources */,
 				D862D77325A2246B001F0DDE /* DriverData.swift in Sources */,
 				D8A4956B25A6931E00ACD473 /* PitStopsViewController.swift in Sources */,
+				D8A495CE25A727A100ACD473 /* PitStopsCollectionViewCell.swift in Sources */,
 				D862D76A25A22359001F0DDE /* DriverCollectionViewCell.swift in Sources */,
 				D8A495BC25A6A84E00ACD473 /* PitStopsEndpoint.swift in Sources */,
 				D862D6B825A10E8F001F0DDE /* HomeViewController.swift in Sources */,
