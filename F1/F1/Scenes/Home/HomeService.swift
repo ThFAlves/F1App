@@ -6,13 +6,8 @@ protocol HomeServicing {
 
 typealias CompletionSeasonData = (Result<SeasonData, ApiError>) -> Void
 
-final class HomeService {
-    init() {
-    }
-}
-
 // MARK: - HomeServicing
-extension HomeService: HomeServicing {
+final class HomeService: HomeServicing {
     func getCurrentSeason(completion: @escaping CompletionSeasonData) {
         Api<SeasonData>(endpoint: SeasonEndpoint.current).request { result in
             DispatchQueue.main.async {

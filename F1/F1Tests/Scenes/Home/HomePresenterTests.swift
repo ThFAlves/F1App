@@ -67,10 +67,11 @@ final class HomePresenterTests: XCTestCase {
         XCTAssertEqual(coordinatorSpy.action, [.detail(round: "1")])
     }
     
-    func testPresentError_WhenReceiveBadRequest_ShouldPresentError() {
-        sut.presentError(apiError: .badRequest)
+    func testPresentError_WhenReceiveTimeout_ShouldPresentError() {
+        sut.presentError(apiError: .timeout)
         XCTAssertEqual(viewControllerSpy.callDisplayErrorCount, 1)
         XCTAssertNotNil(viewControllerSpy.apiError)
+        XCTAssertEqual(viewControllerSpy.apiError?.message, "Você está sem internet")
     }
     
     func testPresentRaces_WhenReceiveEmptyRaces_ShouldPresentRaces() {

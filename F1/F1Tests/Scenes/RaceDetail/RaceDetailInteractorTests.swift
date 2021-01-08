@@ -48,7 +48,7 @@ private final class RaceDetailServiceSpy: RaceDetailServicing {
 
     // MARK: - Variables
     private(set) var updateModelCalledCount = 0
-    public var result: Result<DriverData, ApiError>!
+    public var result: Result<DriverData, ApiError> = .failure(.badRequest)
     
     // MARK: - Public Methods
     func getResult(round: String, completion: @escaping CompletionDriverData) {
@@ -73,7 +73,7 @@ final class RaceDetailInteractorTests: XCTestCase {
     
     // MARK: - Public Methods
     func testGetResult_WhenResulIsFailure_ShouldPresentError() {
-        serviceSpy.result = .failure(.timeout)
+        serviceSpy.result = .failure(.otherErrors)
         sut.getResults()
         XCTAssertEqual(presenterSpy.callStartLoadingCount, 1)
         XCTAssertEqual(presenterSpy.callStopLoadingCount, 1)
@@ -106,6 +106,11 @@ final class RaceDetailInteractorTests: XCTestCase {
         sut.drivers = getData(in: "mockResults").data.raceTable.races.first?.results ?? []
         sut.didSelectItem(row: 20)
         XCTAssertEqual(presenterSpy.action, [])
+    }
+    
+    func testOpenDidStop_WhenSelectAction_ShouldPresentScreen() {
+        sut.openPitStop()
+        XCTAssertEqual(presenterSpy.action, [.pitStops(round: "2")])
     }
 }
 

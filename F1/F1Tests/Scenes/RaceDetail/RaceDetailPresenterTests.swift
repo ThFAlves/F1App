@@ -74,10 +74,11 @@ final class RaceDetailPresenterTests: XCTestCase {
         XCTAssertEqual(coordinatorSpy.action, [.open(url: url)])
     }
     
-    func testPresentError_WhenBadReqeuest_ShouldReceiveErrorAlert() {
-        sut.presentError(apiError: .badRequest)
+    func testPresentError_WhenServerError_ShouldReceiveErrorAlert() {
+        sut.presentError(apiError: .serverError)
         XCTAssertEqual(viewControllerSpy.callDisplayErrorCount, 1)
         XCTAssertNotNil(viewControllerSpy.apiError)
+        XCTAssertEqual(viewControllerSpy.apiError?.message, "Tente novamente mais tarde")
     }
     
     func testPresentDrivers_WhenEmpty_ShouldUpdateScreen() {
@@ -112,4 +113,3 @@ final class RaceDetailPresenterTests: XCTestCase {
         XCTAssertEqual(viewControllerSpy.callDisplayStopLoadingCount, 1)
     }
 }
-
