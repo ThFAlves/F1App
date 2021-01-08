@@ -4,9 +4,14 @@ import XCTest
 final class PitStopsInteractorSpy: PresenterToInteractorPitStopsProtocol {
     // MARK: - Variables
     private(set) var callGetPitStopsCount = 0
+    private(set) var callFetchItensCount = 0
 
-    func getPitStops() {
+    func getPitStops(offSet: Int) {
         callGetPitStopsCount += 1
+    }
+    
+    func fetchMoreItensIfNeeded(_ indexPath: IndexPath) {
+        callFetchItensCount += 1
     }
 }
 
@@ -19,7 +24,9 @@ final class PitStopsViewControllerSpy: PresenterToViewPitStopsProtocol {
     private(set) var callDisplayErrorCount = 0
     private(set) var apiError: ApiError?
     private(set) var callDisplayStartLoadingCount = 0
+    private(set) var hasContentStartLoading: Bool?
     private(set) var callDisplayStopLoadingCount = 0
+    private(set) var hasContentStopLoading: Bool?
     
     func displayPitStopsList(list: [PitStopsResults]) {
         callDisplayPitStopsResultCount += 1
@@ -31,12 +38,14 @@ final class PitStopsViewControllerSpy: PresenterToViewPitStopsProtocol {
         self.apiError = apiError
     }
     
-    func startLoading() {
+    func startLoading(hasContent: Bool) {
         callDisplayStartLoadingCount += 1
+        hasContentStartLoading = hasContent
     }
     
-    func stopLoading() {
+    func stopLoading(hasContent: Bool) {
         callDisplayStopLoadingCount += 1
+        hasContentStopLoading = hasContent
     }
 }
 
@@ -66,7 +75,12 @@ final class PitStopsPresenterTests: XCTestCase {
         XCTAssertEqual(viewControllerSpy.result.count, 30)
     }
     
-    func testAAA() {
+    func testHasMoreItens_WhenReceiveValidPosition_ShouldCallFetch() {
+        sut.hasMoreItens(IndexPath(row: 0, section: 0))
+        XCTAssertEqual(interactorSpy.callFetchItensCount, 1)
+    }
+    
+    func testGetPitStops_WhenRequest_ShouldCallInteractor() {
         sut.getPitStops()
         XCTAssertEqual(interactorSpy.callGetPitStopsCount, 1)
     }
@@ -78,15 +92,19 @@ final class PitStopsPresenterTests: XCTestCase {
     }
     
     func testPresentStartLoading_WhenStartLoading_ShouldPresentLoading() {
-        sut.presentStartLoading()
+        sut.presentStartLoading(hasContent: true)
         XCTAssertEqual(viewControllerSpy.callDisplayStartLoadingCount, 1)
         XCTAssertEqual(viewControllerSpy.callDisplayStopLoadingCount, 0)
+        XCTAssertEqual(viewControllerSpy.hasContentStartLoading, true)
+        XCTAssertNil(viewControllerSpy.hasContentStopLoading)
     }
     
     func testPresentStopLoading_WhenStopLoading_WhenPresentStopLoading() {
-        sut.presentStopLoading()
+        sut.presentStopLoading(hasContent: true)
         XCTAssertEqual(viewControllerSpy.callDisplayStartLoadingCount, 0)
         XCTAssertEqual(viewControllerSpy.callDisplayStopLoadingCount, 1)
+        XCTAssertEqual(viewControllerSpy.hasContentStopLoading, true)
+        XCTAssertNil(viewControllerSpy.hasContentStartLoading)
     }
 }
 

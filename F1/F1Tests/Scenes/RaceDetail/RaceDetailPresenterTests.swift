@@ -15,7 +15,6 @@ private final class RaceDetailCoordinatorSpy: RaceDetailCoordinating {
 }
 
 final class RaceDetailViewControllerSpy: RaceDetailDisplaying {
-        
     // MARK: - Variables
     private(set) var callDisplayDriverResultCount = 0
     private(set) var result = [DriverResult]()

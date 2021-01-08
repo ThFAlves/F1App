@@ -3,6 +3,7 @@ import Foundation
 protocol RaceDetailInteracting: AnyObject {
     func getResults()
     func didSelectItem(row: Int)
+    func openPitStop()
 }
 
 final class RaceDetailInteractor {
@@ -45,5 +46,9 @@ extension RaceDetailInteractor: RaceDetailInteracting {
             return
         }
         presenter.didNextStep(action: .open(url: url))
+    }
+    
+    func openPitStop() {
+        presenter.didNextStep(action: .pitStops(round: round))
     }
 }

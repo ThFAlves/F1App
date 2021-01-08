@@ -2,7 +2,6 @@ import XCTest
 @testable import F1
 
 private final class RaceDetailPresenterSpy: RaceDetailPresenting {
-
     // MARK: - Variables
     var viewController: RaceDetailDisplaying?
     

@@ -15,10 +15,10 @@ final class PitStopsInteractor {
         !pitStopsResult.isEmpty
     }
     
-    private var hasRequest = false
-    private var page: Page?
+    var hasRequest = false
+    var page: Page?
     
-    private var pitStopsResult: [PitStopsResults] = []
+    var pitStopsResult: [PitStopsResults] = []
     
     init(service: PitStopsServicing, round: String) {
         self.service = service
