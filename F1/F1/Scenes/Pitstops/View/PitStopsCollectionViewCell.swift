@@ -123,5 +123,3 @@ extension PitStopsCollectionViewCell: ViewConfiguration {
         self.backgroundColor = .clear
     }
 }
-
-

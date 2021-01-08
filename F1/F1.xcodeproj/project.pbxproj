@@ -24,7 +24,6 @@
 		D862D6C925A10ED6001F0DDE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6C825A10ED6001F0DDE /* ViewController.swift */; };
 		D862D6D525A11077001F0DDE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6D425A11077001F0DDE /* HTTPMethod.swift */; };
 		D862D6DD25A1108A001F0DDE /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6DC25A1108A001F0DDE /* HTTPStatusCode.swift */; };
-		D862D6E225A110F2001F0DDE /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6E125A110F2001F0DDE /* RequestError.swift */; };
 		D862D6E725A11134001F0DDE /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6E625A11134001F0DDE /* ApiError.swift */; };
 		D862D6EC25A111BC001F0DDE /* ApiCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6EB25A111BC001F0DDE /* ApiCompletion.swift */; };
 		D862D6F125A11203001F0DDE /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D862D6F025A11203001F0DDE /* ApiEndpoint.swift */; };
@@ -65,6 +64,11 @@
 		D8A495D725A7321700ACD473 /* PitStopsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495D625A7321700ACD473 /* PitStopsPresenterTests.swift */; };
 		D8A495E325A7384000ACD473 /* mockPitStops.json in Resources */ = {isa = PBXBuildFile; fileRef = D8A495E225A7384000ACD473 /* mockPitStops.json */; };
 		D8A495EE25A73B1200ACD473 /* PitStopsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A495ED25A73B1200ACD473 /* PitStopsInteractorTests.swift */; };
+		D8A4960725A7C9F500ACD473 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4960625A7C9F500ACD473 /* Page.swift */; };
+		D8A4961725A7F49500ACD473 /* HomeCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4961625A7F49400ACD473 /* HomeCoordinatorTests.swift */; };
+		D8A4961D25A7F57E00ACD473 /* ViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4961C25A7F57E00ACD473 /* ViewControllerSpy.swift */; };
+		D8A4962525A7F6B500ACD473 /* NavigationControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4962425A7F6B500ACD473 /* NavigationControllerSpy.swift */; };
+		D8A4962A25A7F7A400ACD473 /* RaceDetailCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A4962925A7F7A400ACD473 /* RaceDetailCoordinatorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,7 +117,6 @@
 		D862D6C825A10ED6001F0DDE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D862D6D425A11077001F0DDE /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		D862D6DC25A1108A001F0DDE /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
-		D862D6E125A110F2001F0DDE /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		D862D6E625A11134001F0DDE /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		D862D6EB25A111BC001F0DDE /* ApiCompletion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCompletion.swift; sourceTree = "<group>"; };
 		D862D6F025A11203001F0DDE /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
@@ -155,6 +158,11 @@
 		D8A495D625A7321700ACD473 /* PitStopsPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsPresenterTests.swift; sourceTree = "<group>"; };
 		D8A495E225A7384000ACD473 /* mockPitStops.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mockPitStops.json; sourceTree = "<group>"; };
 		D8A495ED25A73B1200ACD473 /* PitStopsInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitStopsInteractorTests.swift; sourceTree = "<group>"; };
+		D8A4960625A7C9F500ACD473 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		D8A4961625A7F49400ACD473 /* HomeCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinatorTests.swift; sourceTree = "<group>"; };
+		D8A4961C25A7F57E00ACD473 /* ViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerSpy.swift; sourceTree = "<group>"; };
+		D8A4962425A7F6B500ACD473 /* NavigationControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerSpy.swift; sourceTree = "<group>"; };
+		D8A4962925A7F7A400ACD473 /* RaceDetailCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceDetailCoordinatorTests.swift; sourceTree = "<group>"; };
 		E4E8202E3BB6ADBB25CE522C /* Pods-F1Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-F1Tests.release.xcconfig"; path = "Target Support Files/Pods-F1Tests/Pods-F1Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +257,7 @@
 		D862D68C25A10D7A001F0DDE /* F1Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D8A4961B25A7F57100ACD473 /* Mocks */,
 				D862D79825A2B253001F0DDE /* Scenes */,
 				D862D68F25A10D7A001F0DDE /* Info.plist */,
 				D862D7BF25A2C9A0001F0DDE /* MockCodable.swift */,
@@ -315,7 +324,6 @@
 			children = (
 				D862D6D425A11077001F0DDE /* HTTPMethod.swift */,
 				D862D6DC25A1108A001F0DDE /* HTTPStatusCode.swift */,
-				D862D6E125A110F2001F0DDE /* RequestError.swift */,
 				D862D6E625A11134001F0DDE /* ApiError.swift */,
 				D862D6EB25A111BC001F0DDE /* ApiCompletion.swift */,
 				D862D6F025A11203001F0DDE /* ApiEndpoint.swift */,
@@ -416,6 +424,7 @@
 				D862D7C425A2CACF001F0DDE /* Mock */,
 				D862D7A025A2B2E2001F0DDE /* HomeInteractorTests.swift */,
 				D862D7AB25A2B911001F0DDE /* HomePresenterTests.swift */,
+				D8A4961625A7F49400ACD473 /* HomeCoordinatorTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -426,6 +435,7 @@
 				D862D7CD25A2CFC5001F0DDE /* Mock */,
 				D862D7B225A2C39F001F0DDE /* RaceDetailInteractorTests.swift */,
 				D862D7BA25A2C63D001F0DDE /* RaceDetailPresenterTests.swift */,
+				D8A4962925A7F7A400ACD473 /* RaceDetailCoordinatorTests.swift */,
 			);
 			path = RaceDetail;
 			sourceTree = "<group>";
@@ -453,8 +463,8 @@
 				D8A495C325A6AB1500ACD473 /* Model */,
 				D8A495BA25A6A83900ACD473 /* Service */,
 				D8A4956525A6931E00ACD473 /* PitStopsViewController.swift */,
-				D8A4956325A6931E00ACD473 /* PitStopsRouter.swift */,
 				D8A4956425A6931E00ACD473 /* PitStopsPresenter.swift */,
+				D8A4956325A6931E00ACD473 /* PitStopsRouter.swift */,
 				D8A4956625A6931E00ACD473 /* PitStopsInteractor.swift */,
 				D8A4956725A6931E00ACD473 /* PitStopsService.swift */,
 			);
@@ -473,6 +483,7 @@
 			isa = PBXGroup;
 			children = (
 				D8A495C425A6AB2400ACD473 /* PitStopsData.swift */,
+				D8A4960625A7C9F500ACD473 /* Page.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -501,6 +512,15 @@
 				D8A495E225A7384000ACD473 /* mockPitStops.json */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		D8A4961B25A7F57100ACD473 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D8A4961C25A7F57E00ACD473 /* ViewControllerSpy.swift */,
+				D8A4962425A7F6B500ACD473 /* NavigationControllerSpy.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -773,7 +793,6 @@
 				D8A495BC25A6A84E00ACD473 /* PitStopsEndpoint.swift in Sources */,
 				D862D6B825A10E8F001F0DDE /* HomeViewController.swift in Sources */,
 				D862D6EC25A111BC001F0DDE /* ApiCompletion.swift in Sources */,
-				D862D6E225A110F2001F0DDE /* RequestError.swift in Sources */,
 				D862D75425A1820E001F0DDE /* RaceDetailFactory.swift in Sources */,
 				D862D75325A1820E001F0DDE /* RaceDetailCoordinator.swift in Sources */,
 				D862D6DD25A1108A001F0DDE /* HTTPStatusCode.swift in Sources */,
@@ -784,6 +803,7 @@
 				D862D6F625A112F1001F0DDE /* Api.swift in Sources */,
 				D862D76125A18388001F0DDE /* ResultsEndpoint.swift in Sources */,
 				D8A4956D25A6931E00ACD473 /* PitStopsService.swift in Sources */,
+				D8A4960725A7C9F500ACD473 /* Page.swift in Sources */,
 				D862D6F125A11203001F0DDE /* ApiEndpoint.swift in Sources */,
 				D862D6FB25A114E6001F0DDE /* Environment.swift in Sources */,
 			);
@@ -798,6 +818,10 @@
 				D862D7A125A2B2E2001F0DDE /* HomeInteractorTests.swift in Sources */,
 				D862D7C025A2C9A0001F0DDE /* MockCodable.swift in Sources */,
 				D862D7AC25A2B911001F0DDE /* HomePresenterTests.swift in Sources */,
+				D8A4962A25A7F7A400ACD473 /* RaceDetailCoordinatorTests.swift in Sources */,
+				D8A4961D25A7F57E00ACD473 /* ViewControllerSpy.swift in Sources */,
+				D8A4962525A7F6B500ACD473 /* NavigationControllerSpy.swift in Sources */,
+				D8A4961725A7F49500ACD473 /* HomeCoordinatorTests.swift in Sources */,
 				D862D7BB25A2C63D001F0DDE /* RaceDetailPresenterTests.swift in Sources */,
 				D862D7B325A2C39F001F0DDE /* RaceDetailInteractorTests.swift in Sources */,
 			);

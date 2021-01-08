@@ -1,7 +1,8 @@
 import Foundation
 
 protocol PresenterToInteractorPitStopsProtocol: AnyObject {
-    func getPitStops()
+    func getPitStops(offSet: Int)
+    func fetchMoreItensIfNeeded(_ indexPath: IndexPath)
 }
 
 final class PitStopsInteractor {
@@ -10,27 +11,54 @@ final class PitStopsInteractor {
     
     weak var presenter: InteractorToPresenterPitStopsProtocol?
 
+    private var hasContent: Bool {
+        !pitStopsResult.isEmpty
+    }
+    
+    var hasRequest = false
+    var page: Page?
+    
+    var pitStopsResult: [PitStopsResults] = []
+    
     init(service: PitStopsServicing, round: String) {
         self.service = service
         self.round = round
+    }
+    
+    private func getNextOffSet() -> Int? {
+        guard !hasRequest, let page = page, (page.limit + page.offset < page.total) else {
+            return nil
+        }
+        return page.limit + page.offset
     }
 }
 
 // MARK: - PitStopsInteracting
 extension PitStopsInteractor: PresenterToInteractorPitStopsProtocol {
-    func getPitStops() {
-        presenter?.presentStartLoading()
-        service.getPitStops(round: "3") { [weak self] result in
-            self?.presenter?.presentStopLoading()
+    func fetchMoreItensIfNeeded(_ indexPath: IndexPath) {
+        guard indexPath.row == (pitStopsResult.count - 1), let offSet = getNextOffSet() else { return }
+        getPitStops(offSet: offSet)
+    }
+    
+    func getPitStops(offSet: Int) {
+        presenter?.presentStartLoading(hasContent: hasContent)
+        hasRequest = true
+        service.getPitStops(round: round, offSet: offSet) { [weak self] result in
+            guard let self = self else { return }
+            self.hasRequest = false
             switch result {
             case let .success(model):
                 guard let race = model.data.raceTable.races.first else {
-                    self?.presenter?.presentError(apiError: .otherErrors)
+                    self.presenter?.presentError(apiError: .otherErrors)
                     return
                 }
-                self?.presenter?.displayPitStopsList(list: race.pitStopsResult)
+                self.page = Page(pitStopData: model.data)
+                self.pitStopsResult.append(contentsOf: race.pitStopsResult)
+                self.presenter?.presentStopLoading(hasContent: self.hasContent)
+                self.presenter?.displayPitStopsList(list: race.pitStopsResult)
             case let .failure(apiError):
-                self?.presenter?.presentError(apiError: apiError)
+                self.presenter?.presentStopLoading(hasContent: self.hasContent)
+                self.presenter?.presentError(apiError: apiError)
             }
         }
     }

@@ -18,13 +18,13 @@ final class RaceDetailCoordinator {
 // MARK: - RaceDetailCoordinating
 extension RaceDetailCoordinator: RaceDetailCoordinating {
     func perform(action: RaceDetailAction) {
-        let view: UIViewController
         switch action {
         case let .open(url):
-            view = SFSafariViewController(url: url)
+            let view = SFSafariViewController(url: url)
+            viewController?.navigationController?.present(view, animated: true)
         case let .pitStops(round):
-            view = PitStopsRouter.createScene(with: round)
+            let view = PitStopsRouter.createScene(with: round)
+            viewController?.navigationController?.pushViewController(view, animated: true)
         }
-        viewController?.navigationController?.pushViewController(view, animated: true)
     }
 }

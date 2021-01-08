@@ -64,6 +64,13 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.getResults()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "pitStopIcon"),
+            style: .plain,
+            target: self,
+            action: #selector(openPitStop)
+        )
     }
 
     override func buildViewHierarchy() {
@@ -90,6 +97,11 @@ final class RaceDetailViewController: ViewController<RaceDetailInteracting, UIVi
         view.backgroundColor = Colors.base
         activityIndicator.color = Colors.white
         infoView.backgroundColor = Colors.secondaryBase
+    }
+    
+    @objc
+    func openPitStop() {
+        interactor.openPitStop()
     }
 }
 

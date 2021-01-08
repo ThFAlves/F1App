@@ -48,7 +48,16 @@ class Api<E: Decodable> {
         
         request.httpMethod = endpoint.method.rawValue
 
+        let allHeaders = defaultRequestHeaders().merging(endpoint.customHeaders) { current, _ in current }
+        allHeaders.forEach { header in
+            request.addValue(header.value, forHTTPHeaderField: header.key)
+        }
+        
         return request
+    }
+    
+    private func defaultRequestHeaders() -> [String: String] {
+        [:]
     }
     
     private func handle(request: URLRequest,
