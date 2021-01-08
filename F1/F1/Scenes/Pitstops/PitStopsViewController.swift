@@ -23,6 +23,44 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
     
     private lazy var activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
 
+    private lazy var lapLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = Colors.red
+        label.text = "Lap"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var stopLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.textColor = Colors.red
+        label.text = "Stop"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var lapStopStack: UIStackView = {
+        let stack = UIStackView()
+        stack.addArrangedSubview(lapLabel)
+        stack.addArrangedSubview(stopLabel)
+        stack.axis = .horizontal
+        stack.distribution = .fillEqually
+        return stack
+    }()
+    
+    private lazy var infoView = UIView()
+    
+    private lazy var driverLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Driver"
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.textColor = Colors.red
+        label.textAlignment = .center
+        return label
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
@@ -53,12 +91,30 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
     }
 
     override func buildViewHierarchy() {
+        infoView.addSubview(lapStopStack)
+        infoView.addSubview(driverLabel)
+        view.addSubview(infoView)
         view.addSubview(collectionView)
     }
     
     override func setupConstraints() {
+        lapStopStack.snp.makeConstraints {
+            $0.width.equalTo(120)
+            $0.top.bottom.leading.equalToSuperview()
+        }
+        
+        driverLabel.snp.makeConstraints {
+            $0.leading.equalTo(lapStopStack.snp.trailing)
+            $0.top.bottom.trailing.equalToSuperview()
+        }
+        
+        infoView.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(64)
+        }
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(infoView.snp.bottom).offset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
     }
 
@@ -66,6 +122,7 @@ final class PitStopsViewController: ViperViewController<ViewToPresenterPitStopsP
         title = "Pit Stops"
         view.backgroundColor = Colors.base
         activityIndicator.color = Colors.white
+        infoView.backgroundColor = Colors.secondaryBase
     }
 }
 

@@ -111,6 +111,7 @@ extension DriverCollectionViewCell: ViewConfiguration {
             $0.leading.top.equalToSuperview()
             $0.width.equalTo(80)
         }
+        
         stack.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(16)
         }
